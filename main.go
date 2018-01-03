@@ -1180,7 +1180,6 @@ func loadWordFrames(word []uint8) []lpcFrame {
 	var tempSynth lpcFrame
 	for energy != 0xf {
 		tempSynth.k = make([]float32, 0)
-		// fmt.Print("DEBUG: getting frame ", len(synth))
 		var repeat uint8
 		// Read speech data, processing the variable size frames
 		energy = getBits(&bitIndex, 4, word)
@@ -1274,7 +1273,6 @@ func getBits(bitIndex *uint, size int, byteData []uint8) uint8 {
 }
 
 func play(synth []lpcFrame, fp *os.File) {
-	chirp := []float32{0, 42, -44, 50, -78, 18, 37, 20, 2, -31, -59, 2, 95, 90, 5, 15, 38, -4, -91, -91, -42, -35, -36, -4, 37, 43, 34, 33, 15, -1, -8, -18, -19, -17, -9, -10, -6, 0, 3, 2, 1}
 	var periodCounter float32
 	periodCounter = 0
 	var x [Coefficients + 1]float32
@@ -1283,40 +1281,18 @@ func play(synth []lpcFrame, fp *os.File) {
 	var lfsr uint16 = 1 // Initialize linear feedback shift register
 
 	for frameNumber := 0; frameNumber < len(synth); frameNumber++ {
-		// fmt.Println("DEBUG: frame:", frameNumber)
 
 		for sampleInFrame := 0; sampleInFrame < samplesPerFrame; sampleInFrame++ {
+			// Generate source signal
 			if synth[frameNumber].period > 0 {
 				// Voiced source
-				if periodCounter < synth[frameNumber].period {
-					periodCounter++
-				} else {
-					periodCounter = 0
-				}
-				if periodCounter < ChirpSize {
-					u[10] = ((chirp[int(periodCounter)]) * synth[frameNumber].energy) / 256
-				} else {
-					u[10] = 0
-				}
-
+				u[10] = playChirp(frameNumber, synth, &periodCounter)
 			} else {
 				// Unvoiced source
-				// Normal Galois configuration linear feedback shift register
-				var lsb uint16 = lfsr & 1 // Get LSB (i.e., the output bit)
-				lfsr >>= 1                // Shift register
-				if lsb > 0 {              // If the output bit is 1, apply toggle mask
-					lfsr ^= 0xB800
-				}
-				if lfsr&1 > 0 {
-					u[10] = synth[frameNumber].energy
-				} else {
-					u[10] = -synth[frameNumber].energy
-				}
-
-				u[10] *= float32(lfsr & 1)
+				u[10] = playNoise(frameNumber, synth, &lfsr)
 			}
+			// Filter the signal
 			// Lattice filter forward path
-			// fmt.Println("DEBUG: frameNumber, sampleInFrame, len(synth),len(synth[frameNumber].k", frameNumber, sampleInFrame, len(synth), len(synth[frameNumber].k))
 			u[9] = u[10] - ((synth[frameNumber].k[9] * x[9]) / 128)
 			u[8] = u[9] - ((synth[frameNumber].k[8] * x[8]) / 128)
 			u[7] = u[8] - ((synth[frameNumber].k[7] * x[7]) / 128)
@@ -1363,6 +1339,38 @@ func writeInt16ToFile(input int16, fp *os.File) {
 	}
 	intByteArray := buff.Bytes()
 	fp.Write(intByteArray)
+}
+
+func playChirp(frameNumber int, synth []lpcFrame, periodCounter *float32) float32 {
+	chirp := []float32{0, 42, -44, 50, -78, 18, 37, 20, 2, -31, -59, 2, 95, 90, 5, 15, 38, -4, -91, -91, -42, -35, -36, -4, 37, 43, 34, 33, 15, -1, -8, -18, -19, -17, -9, -10, -6, 0, 3, 2, 1}
+
+	if *periodCounter < synth[frameNumber].period {
+		*periodCounter++
+	} else {
+		*periodCounter = 0
+	}
+	if *periodCounter < ChirpSize {
+		return ((chirp[int(*periodCounter)]) * synth[frameNumber].energy) / 256
+	} else {
+		return 0
+	}
+}
+
+func playNoise(frameNumber int, synth []lpcFrame, lfsr *uint16) float32 {
+	var output float32
+	// Normal Galois configuration linear feedback shift register
+	var lsb uint16 = *lfsr & 1 // Get LSB (i.e., the output bit)
+	*lfsr >>= 1                // Shift register
+	if lsb > 0 {               // If the output bit is 1, apply toggle mask
+		*lfsr ^= 0xB800
+	}
+	if *lfsr&1 > 0 {
+		output = synth[frameNumber].energy
+	} else {
+		output = -synth[frameNumber].energy
+	}
+	output *= float32(*lfsr & 1)
+	return output
 }
 
 // Target stream : 8khz sampling rate, 16bit quantization
