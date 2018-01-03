@@ -1268,9 +1268,6 @@ func getBits(bitIndex *uint, size int, byteData []uint8) uint8 {
 func play(synth []lpcFrame, fp *os.File) {
 	var periodCounter float32
 	periodCounter = 0
-	// var x [Coefficients + 1]float32
-	// var u [Coefficients + 1]float32
-
 	x := make([]float32, Coefficients+1)
 	u := make([]float32, Coefficients+1)
 	samplesPerFrame := 256
