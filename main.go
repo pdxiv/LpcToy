@@ -1274,7 +1274,6 @@ func play(synth []lpcFrame, fp *os.File) {
 	var lfsr uint16 = 1 // Initialize linear feedback shift register
 
 	for frameNumber := 0; frameNumber < len(synth); frameNumber++ {
-
 		for sampleInFrame := 0; sampleInFrame < samplesPerFrame; sampleInFrame++ {
 			// Generate source signal
 			if synth[frameNumber].period > 0 {
@@ -1286,6 +1285,8 @@ func play(synth []lpcFrame, fp *os.File) {
 			}
 			// Filter the signal
 			filter(frameNumber, synth, u, x)
+
+			// Write the sample to file
 			writeInt16ToFile(int16(u[0]*128), fp)
 		}
 	}
