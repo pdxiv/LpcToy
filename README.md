@@ -6,8 +6,6 @@ All the math is being done in floating point to "improve" sound quality.
 ## Possible to-do items
 ### Low-hanging fruit
 - Translate oscillator frequency to Hz
-- Break out filter to its' own function
-- Break out voice oscillator to its' own function
 ### More difficult
 - Break words into phonemes for resynthesis
 - Allow gradual cross-fading of filter coefficients between frames, for smoother sound
