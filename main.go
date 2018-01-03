@@ -1185,7 +1185,6 @@ func loadWordFrames(word []uint8) []lpcFrame {
 		energy = getBits(&bitIndex, 4, word)
 		// Energy = 0: rest frame
 		if energy == 0 {
-			// fmt.Println(" - Rest frame!")
 			tempSynth.energy = 0
 
 			// Not sure if/why the below three lines work lol
@@ -1195,7 +1194,6 @@ func loadWordFrames(word []uint8) []lpcFrame {
 
 			// Energy = 15: stop frame. Silence the synthesiser
 		} else if energy == 0xf {
-			// fmt.Println(" - Silent!")
 			tempSynth.energy = 0
 			tempSynth.k = tempSynth.k[:0]
 			for i := 0; i < Coefficients; i++ {
@@ -1217,8 +1215,6 @@ func loadWordFrames(word []uint8) []lpcFrame {
 				tempSynth.k = append(tempSynth.k, float32(lookupK[3][getBits(&bitIndex, 4, word)]))
 				// Voiced frames use 6 extra coefficients
 				if tempSynth.period > 0 {
-					// fmt.Println(" - Voiced!")
-					// tempSynth.period = 90 // just for playing around with pitch temporarily
 					tempSynth.k = append(tempSynth.k, float32(lookupK[4][getBits(&bitIndex, 4, word)]))
 					tempSynth.k = append(tempSynth.k, float32(lookupK[5][getBits(&bitIndex, 4, word)]))
 					tempSynth.k = append(tempSynth.k, float32(lookupK[6][getBits(&bitIndex, 4, word)]))
@@ -1226,21 +1222,18 @@ func loadWordFrames(word []uint8) []lpcFrame {
 					tempSynth.k = append(tempSynth.k, float32(lookupK[8][getBits(&bitIndex, 3, word)]))
 					tempSynth.k = append(tempSynth.k, float32(lookupK[9][getBits(&bitIndex, 3, word)]))
 				} else {
-					// fmt.Println(" - Unvoiced!")
 					// If unvoiced, make other coefficients zero
 					for i := 0; i < Coefficients-4; i++ {
 						tempSynth.k = append(tempSynth.k, 0)
 					}
 				}
 			} else {
-				// fmt.Println(" - Repeat!")
 				// Repeat frame. Copy the constants of the previous frame
 				constants := len(synth[len(synth)-1].k)
 				tempSynth.k = make([]float32, constants)
 				copy(tempSynth.k, synth[len(synth)-1].k)
 			}
 		}
-		// fmt.Printf("DEBUG: %d\t%+v\n", len(synth), tempSynth)
 		synth = append(synth, tempSynth)
 	}
 	return synth
@@ -1275,8 +1268,11 @@ func getBits(bitIndex *uint, size int, byteData []uint8) uint8 {
 func play(synth []lpcFrame, fp *os.File) {
 	var periodCounter float32
 	periodCounter = 0
-	var x [Coefficients + 1]float32
-	var u [Coefficients + 1]float32
+	// var x [Coefficients + 1]float32
+	// var u [Coefficients + 1]float32
+
+	x := make([]float32, Coefficients+1)
+	u := make([]float32, Coefficients+1)
 	samplesPerFrame := 256
 	var lfsr uint16 = 1 // Initialize linear feedback shift register
 
@@ -1292,39 +1288,7 @@ func play(synth []lpcFrame, fp *os.File) {
 				u[10] = playNoise(frameNumber, synth, &lfsr)
 			}
 			// Filter the signal
-			// Lattice filter forward path
-			u[9] = u[10] - ((synth[frameNumber].k[9] * x[9]) / 128)
-			u[8] = u[9] - ((synth[frameNumber].k[8] * x[8]) / 128)
-			u[7] = u[8] - ((synth[frameNumber].k[7] * x[7]) / 128)
-			u[6] = u[7] - ((synth[frameNumber].k[6] * x[6]) / 128)
-			u[5] = u[6] - ((synth[frameNumber].k[5] * x[5]) / 128)
-			u[4] = u[5] - ((synth[frameNumber].k[4] * x[4]) / 128)
-			u[3] = u[4] - ((synth[frameNumber].k[3] * x[3]) / 128)
-			u[2] = u[3] - ((synth[frameNumber].k[2] * x[2]) / 128)
-			u[1] = u[2] - ((synth[frameNumber].k[1] * x[1]) / 32768)
-			u[0] = u[1] - ((synth[frameNumber].k[0] * x[0]) / 32768)
-
-			// Output clamp
-			if u[0] > 2047 {
-				u[0] = 2047
-			}
-			if u[0] < -2048 {
-				u[0] = -2048
-			}
-
-			// Lattice filter reverse path
-			x[9] = x[8] + ((synth[frameNumber].k[8] * u[8]) / 128)
-			x[8] = x[7] + ((synth[frameNumber].k[7] * u[7]) / 128)
-			x[7] = x[6] + ((synth[frameNumber].k[6] * u[6]) / 128)
-			x[6] = x[5] + ((synth[frameNumber].k[5] * u[5]) / 128)
-			x[5] = x[4] + ((synth[frameNumber].k[4] * u[4]) / 128)
-			x[4] = x[3] + ((synth[frameNumber].k[3] * u[3]) / 128)
-			x[3] = x[2] + ((synth[frameNumber].k[2] * u[2]) / 128)
-			x[2] = x[1] + ((synth[frameNumber].k[1] * u[1]) / 32768)
-			x[1] = x[0] + ((synth[frameNumber].k[0] * u[0]) / 32768)
-
-			x[0] = u[0]
-
+			filter(frameNumber, synth, u, x)
 			writeInt16ToFile(int16(u[0]*128), fp)
 		}
 	}
@@ -1371,6 +1335,41 @@ func playNoise(frameNumber int, synth []lpcFrame, lfsr *uint16) float32 {
 	}
 	output *= float32(*lfsr & 1)
 	return output
+}
+
+func filter(frameNumber int, synth []lpcFrame, u []float32, x []float32) {
+	// Lattice filter forward path
+	u[9] = u[10] - ((synth[frameNumber].k[9] * x[9]) / 128)
+	u[8] = u[9] - ((synth[frameNumber].k[8] * x[8]) / 128)
+	u[7] = u[8] - ((synth[frameNumber].k[7] * x[7]) / 128)
+	u[6] = u[7] - ((synth[frameNumber].k[6] * x[6]) / 128)
+	u[5] = u[6] - ((synth[frameNumber].k[5] * x[5]) / 128)
+	u[4] = u[5] - ((synth[frameNumber].k[4] * x[4]) / 128)
+	u[3] = u[4] - ((synth[frameNumber].k[3] * x[3]) / 128)
+	u[2] = u[3] - ((synth[frameNumber].k[2] * x[2]) / 128)
+	u[1] = u[2] - ((synth[frameNumber].k[1] * x[1]) / 32768)
+	u[0] = u[1] - ((synth[frameNumber].k[0] * x[0]) / 32768)
+
+	// Output clamp
+	if u[0] > 2047 {
+		u[0] = 2047
+	}
+	if u[0] < -2048 {
+		u[0] = -2048
+	}
+
+	// Lattice filter reverse path
+	x[9] = x[8] + ((synth[frameNumber].k[8] * u[8]) / 128)
+	x[8] = x[7] + ((synth[frameNumber].k[7] * u[7]) / 128)
+	x[7] = x[6] + ((synth[frameNumber].k[6] * u[6]) / 128)
+	x[6] = x[5] + ((synth[frameNumber].k[5] * u[5]) / 128)
+	x[5] = x[4] + ((synth[frameNumber].k[4] * u[4]) / 128)
+	x[4] = x[3] + ((synth[frameNumber].k[3] * u[3]) / 128)
+	x[3] = x[2] + ((synth[frameNumber].k[2] * u[2]) / 128)
+	x[2] = x[1] + ((synth[frameNumber].k[1] * u[1]) / 32768)
+	x[1] = x[0] + ((synth[frameNumber].k[0] * u[0]) / 32768)
+
+	x[0] = u[0]
 }
 
 // Target stream : 8khz sampling rate, 16bit quantization
