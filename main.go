@@ -926,7 +926,9 @@ func writeInt16ToFile(input int16, fp *os.File) {
 
 func playChirp(frameNumber int, synth []lpcFrame, periodCounter *float32) float32 {
 	chirp := []float32{0, 42, -44, 50, -78, 18, 37, 20, 2, -31, -59, 2, 95, 90, 5, 15, 38, -4, -91, -91, -42, -35, -36, -4, 37, 43, 34, 33, 15, -1, -8, -18, -19, -17, -9, -10, -6, 0, 3, 2, 1}
-
+	
+	// The "period" value decides how many samples should be in the "wavelength" of the chirp signal.
+	// For example, a value of "41" will give a looping waveform, 42 samples in length.
 	if *periodCounter < synth[frameNumber].period {
 		*periodCounter++
 	} else {
