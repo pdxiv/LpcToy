@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"encoding/binary"
 	"fmt"
+	"math"
 	"os"
 )
 
@@ -15,6 +16,7 @@ type lpcFrame struct {
 
 const Coefficients = 10
 const ChirpSize = 41
+const SampleRate = 8000
 
 func main() {
 	f, _ := os.Create("gotestfile.raw")
@@ -925,20 +927,33 @@ func writeInt16ToFile(input int16, fp *os.File) {
 }
 
 func playChirp(frameNumber int, synth []lpcFrame, periodCounter *float32) float32 {
+	// Chirp waveform table
 	chirp := []float32{0, 42, -44, 50, -78, 18, 37, 20, 2, -31, -59, 2, 95, 90, 5, 15, 38, -4, -91, -91, -42, -35, -36, -4, 37, 43, 34, 33, 15, -1, -8, -18, -19, -17, -9, -10, -6, 0, 3, 2, 1}
-	
+	// synth[frameNumber].period = noteToPeriod((12*1) + 3) // Test
+	// arpeggioTest := []int{0, 3, 5, 7, 12} // Test arpeggio table
+	// synth[frameNumber].period = noteToPeriod((12*1) + float32(arpeggioTest[len(synth)%5])) // Test 2
+
 	// The "period" value decides how many samples should be in the "wavelength" of the chirp signal.
 	// For example, a value of "41" will give a looping waveform, 42 samples in length.
+
+	// Reset the the chirp waveform if the periodCounter is equal to, or exceeds the period.
 	if *periodCounter < synth[frameNumber].period {
 		*periodCounter++
 	} else {
-		*periodCounter = 0
+		*periodCounter -= synth[frameNumber].period
 	}
+
+	// If periodCounter is larger than the number of samples in the chirp waveform table, pad with zeroes.
 	if *periodCounter < ChirpSize {
 		return ((chirp[int(*periodCounter)]) * synth[frameNumber].energy) / 256
 	} else {
 		return 0
 	}
+}
+
+func noteToPeriod(note float32) float32 {
+	// Convert a note number to the period numbers that playChirp() expects
+	return (SampleRate / float32(55*math.Pow(2, (float64(note)/12)))) - 1
 }
 
 func playNoise(frameNumber int, synth []lpcFrame, lfsr *uint16) float32 {
@@ -972,11 +987,11 @@ func filter(frameNumber int, synth []lpcFrame, u []float32, x []float32) {
 	u[0] = u[1] - ((synth[frameNumber].k[0] * x[0]) / 32768)
 
 	// Output clamp
-	if u[0] > 2047 {
-		u[0] = 2047
+	if u[0] > 32767 {
+		u[0] = 32767
 	}
-	if u[0] < -2048 {
-		u[0] = -2048
+	if u[0] < -32768 {
+		u[0] = -32768
 	}
 
 	// Lattice filter reverse path
