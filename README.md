@@ -1,6 +1,6 @@
 # LpcToy
 ## Introduction
-Simple Go program to mess around with LPC-encoded speech. It currently outputs a file in the format raw 8kHz little endian signed 16 bit integer.
+Simple Go program to mess around with LPC-encoded speech. It currently outputs a file in the format raw mono 8kHz little endian signed 16 bit integer.
 Based on the Talkie Speech library for Arduino: https://github.com/going-digital/Talkie.
 All the math is being done in floating point to "improve" sound quality.
 ## Possible to-do items
