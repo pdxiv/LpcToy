@@ -915,7 +915,7 @@ func play(synth []lpcFrame, fp *os.File) {
 	}
 }
 
-// This is needed to convert save a 16 bit file, since golang writes bytes
+// This is needed to save as a 16 bit raw file, since golang only writes bytes
 func writeInt16ToFile(input int16, fp *os.File) {
 	buff := new(bytes.Buffer)
 	err := binary.Write(buff, binary.LittleEndian, input)
