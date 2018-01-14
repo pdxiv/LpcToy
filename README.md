@@ -7,8 +7,6 @@ All the math is being done in floating point to "improve" sound quality.
 ### More difficult
 - Tempo-synchronization of voiced and unvoiced frames (voiced and unvoiced may be treated a bit differently)
 - Break words into phonemes for resynthesis
-- Gradual cross-fading of FIR filter coefficients between frames, for smoother sound
-- Interpolation of frame amplitude data
 - Multisample and interpolate chirp waveform (sinc?), for better sound (maybe it's good enough already, and aliasing doesn't matter in this case?).
 - Direct audio output
 ### Outlandish aspirations
