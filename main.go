@@ -898,21 +898,69 @@ func play(synth []lpcFrame, fp *os.File) {
 
 	for frameNumber := 0; frameNumber < len(synth); frameNumber++ {
 		for sampleInFrame := 0; sampleInFrame < samplesPerFrame; sampleInFrame++ {
+			interpolated := makeInterpolatedFrame(frameNumber, synth, sampleInFrame, samplesPerFrame)
+			// interpolated := synth[frameNumber] // for debugging only
+
+			// arpeggioTest := []int{0, 3, 5, 7, 12}                                              // Test 2 (arpeggio)
+			// interpolated.period = noteToPeriod((12 * 1) + float32(arpeggioTest[len(synth)%5])) // Test 2
+
 			// Generate source signal
 			if synth[frameNumber].period > 0 {
 				// Voiced source
-				u[10] = playChirp(frameNumber, synth, &periodCounter)
+				u[10] = playChirp(frameNumber, interpolated, &periodCounter)
 			} else {
 				// Unvoiced source
-				u[10] = playNoise(frameNumber, synth, &lfsr)
+				u[10] = playNoise(frameNumber, interpolated, &lfsr)
 			}
 			// Filter the signal
-			filter(frameNumber, synth, u, x)
+			filter(frameNumber, interpolated, u, x)
 
 			// Write the sample to file
 			writeInt16ToFile(int16(u[0]*128), fp)
 		}
 	}
+}
+
+func makeInterpolatedFrame(frameNumber int, synth []lpcFrame, sampleInFrame int, samplesPerFrame int) lpcFrame {
+	ratio := 2 * float32(sampleInFrame) / float32(samplesPerFrame)
+	var newFrame lpcFrame
+	newFrame.k = make([]float32, Coefficients+1)
+	var otherIndex int
+	var currRatio float32
+	var otherRatio float32
+	if ratio < 1 {
+		otherRatio = 1 - ratio
+		currRatio = ratio
+		otherIndex = frameNumber - 1
+	} else {
+		otherRatio = ratio - 1
+		currRatio = 2 - ratio
+		otherIndex = frameNumber + 1
+	}
+	// If first entry, don't interpolate with previous frame
+	if otherIndex < 0 {
+		otherIndex++
+	}
+	// If last entry, don't interpolate with next frame
+	if otherIndex >= len(synth) {
+		otherIndex--
+	}
+	// Don't interpolate between unvoiced frames
+	if synth[otherIndex].period == 0 {
+		otherIndex = frameNumber
+	}
+	if synth[frameNumber].period == 0 {
+		otherIndex = frameNumber
+	}
+
+	newFrame.energy = currRatio*synth[frameNumber].energy + otherRatio*synth[otherIndex].energy
+	newFrame.period = currRatio*synth[frameNumber].period + otherRatio*synth[otherIndex].period
+	for coefficient := 0; coefficient < 10; coefficient++ {
+		newFrame.k[coefficient] = currRatio*synth[frameNumber].k[coefficient] + otherRatio*synth[otherIndex].k[coefficient]
+		// newFrame.k[coefficient] = synth[frameNumber].k[coefficient] // For debugging without FIR coefficient interpolation
+	}
+	// fmt.Println(currRatio, frameNumber, otherRatio, otherIndex)
+	return newFrame
 }
 
 // This is needed to save as a 16 bit raw file, since golang only writes bytes
@@ -926,26 +974,23 @@ func writeInt16ToFile(input int16, fp *os.File) {
 	fp.Write(intByteArray)
 }
 
-func playChirp(frameNumber int, synth []lpcFrame, periodCounter *float32) float32 {
+func playChirp(frameNumber int, synth lpcFrame, periodCounter *float32) float32 {
 	// Chirp waveform table
 	chirp := []float32{0, 42, -44, 50, -78, 18, 37, 20, 2, -31, -59, 2, 95, 90, 5, 15, 38, -4, -91, -91, -42, -35, -36, -4, 37, 43, 34, 33, 15, -1, -8, -18, -19, -17, -9, -10, -6, 0, 3, 2, 1}
-	// synth[frameNumber].period = noteToPeriod((12*1) + 3) // Test
-	// arpeggioTest := []int{0, 3, 5, 7, 12} // Test arpeggio table
-	// synth[frameNumber].period = noteToPeriod((12*1) + float32(arpeggioTest[len(synth)%5])) // Test 2
 
 	// The "period" value decides how many samples should be in the "wavelength" of the chirp signal.
 	// For example, a value of "41" will give a looping waveform, 42 samples in length.
 
 	// Reset the the chirp waveform if the periodCounter is equal to, or exceeds the period.
-	if *periodCounter < synth[frameNumber].period {
+	if *periodCounter < synth.period {
 		*periodCounter++
 	} else {
-		*periodCounter -= synth[frameNumber].period
+		*periodCounter -= synth.period
 	}
 
 	// If periodCounter is larger than the number of samples in the chirp waveform table, pad with zeroes.
 	if *periodCounter < ChirpSize {
-		return ((chirp[int(*periodCounter)]) * synth[frameNumber].energy) / 256
+		return ((chirp[int(*periodCounter)]) * synth.energy) / 256
 	} else {
 		return 0
 	}
@@ -956,7 +1001,7 @@ func noteToPeriod(note float32) float32 {
 	return (SampleRate / float32(55*math.Pow(2, (float64(note)/12)))) - 1
 }
 
-func playNoise(frameNumber int, synth []lpcFrame, lfsr *uint16) float32 {
+func playNoise(frameNumber int, synth lpcFrame, lfsr *uint16) float32 {
 	var output float32
 	// Normal Galois configuration linear feedback shift register
 	var lsb uint16 = *lfsr & 1 // Get LSB (i.e., the output bit)
@@ -965,26 +1010,26 @@ func playNoise(frameNumber int, synth []lpcFrame, lfsr *uint16) float32 {
 		*lfsr ^= 0xB800
 	}
 	if *lfsr&1 > 0 {
-		output = synth[frameNumber].energy
+		output = synth.energy
 	} else {
-		output = -synth[frameNumber].energy
+		output = -synth.energy
 	}
 	output *= float32(*lfsr & 1)
 	return output
 }
 
-func filter(frameNumber int, synth []lpcFrame, u []float32, x []float32) {
+func filter(frameNumber int, synth lpcFrame, u []float32, x []float32) {
 	// Lattice filter forward path
-	u[9] = u[10] - ((synth[frameNumber].k[9] * x[9]) / 128)
-	u[8] = u[9] - ((synth[frameNumber].k[8] * x[8]) / 128)
-	u[7] = u[8] - ((synth[frameNumber].k[7] * x[7]) / 128)
-	u[6] = u[7] - ((synth[frameNumber].k[6] * x[6]) / 128)
-	u[5] = u[6] - ((synth[frameNumber].k[5] * x[5]) / 128)
-	u[4] = u[5] - ((synth[frameNumber].k[4] * x[4]) / 128)
-	u[3] = u[4] - ((synth[frameNumber].k[3] * x[3]) / 128)
-	u[2] = u[3] - ((synth[frameNumber].k[2] * x[2]) / 128)
-	u[1] = u[2] - ((synth[frameNumber].k[1] * x[1]) / 32768)
-	u[0] = u[1] - ((synth[frameNumber].k[0] * x[0]) / 32768)
+	u[9] = u[10] - ((synth.k[9] * x[9]) / 128)
+	u[8] = u[9] - ((synth.k[8] * x[8]) / 128)
+	u[7] = u[8] - ((synth.k[7] * x[7]) / 128)
+	u[6] = u[7] - ((synth.k[6] * x[6]) / 128)
+	u[5] = u[6] - ((synth.k[5] * x[5]) / 128)
+	u[4] = u[5] - ((synth.k[4] * x[4]) / 128)
+	u[3] = u[4] - ((synth.k[3] * x[3]) / 128)
+	u[2] = u[3] - ((synth.k[2] * x[2]) / 128)
+	u[1] = u[2] - ((synth.k[1] * x[1]) / 32768)
+	u[0] = u[1] - ((synth.k[0] * x[0]) / 32768)
 
 	// Output clamp
 	if u[0] > 32767 {
@@ -995,15 +1040,15 @@ func filter(frameNumber int, synth []lpcFrame, u []float32, x []float32) {
 	}
 
 	// Lattice filter reverse path
-	x[9] = x[8] + ((synth[frameNumber].k[8] * u[8]) / 128)
-	x[8] = x[7] + ((synth[frameNumber].k[7] * u[7]) / 128)
-	x[7] = x[6] + ((synth[frameNumber].k[6] * u[6]) / 128)
-	x[6] = x[5] + ((synth[frameNumber].k[5] * u[5]) / 128)
-	x[5] = x[4] + ((synth[frameNumber].k[4] * u[4]) / 128)
-	x[4] = x[3] + ((synth[frameNumber].k[3] * u[3]) / 128)
-	x[3] = x[2] + ((synth[frameNumber].k[2] * u[2]) / 128)
-	x[2] = x[1] + ((synth[frameNumber].k[1] * u[1]) / 32768)
-	x[1] = x[0] + ((synth[frameNumber].k[0] * u[0]) / 32768)
+	x[9] = x[8] + ((synth.k[8] * u[8]) / 128)
+	x[8] = x[7] + ((synth.k[7] * u[7]) / 128)
+	x[7] = x[6] + ((synth.k[6] * u[6]) / 128)
+	x[6] = x[5] + ((synth.k[5] * u[5]) / 128)
+	x[5] = x[4] + ((synth.k[4] * u[4]) / 128)
+	x[4] = x[3] + ((synth.k[3] * u[3]) / 128)
+	x[3] = x[2] + ((synth.k[2] * u[2]) / 128)
+	x[2] = x[1] + ((synth.k[1] * u[1]) / 32768)
+	x[1] = x[0] + ((synth.k[0] * u[0]) / 32768)
 
 	x[0] = u[0]
 }
