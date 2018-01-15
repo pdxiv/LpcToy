@@ -897,13 +897,14 @@ func play(synth []lpcFrame, word string, fp *os.File) {
 	samplesPerFrame := 256
 	var lfsr uint16 = 1 // Initialize linear feedback shift register
 
-	fmt.Println("")   // Debug
 	fmt.Println(word) // Debug
 
 	for frameNumber := 0; frameNumber < len(synth); frameNumber++ {
 
 		// Some debugging for helping with decoding phonemes
-		if synth[frameNumber].period <= 0 {
+		if synth[frameNumber].energy <= 0 {
+			fmt.Print("x") // Silent. Debug
+		} else if synth[frameNumber].period <= 0 {
 			fmt.Print("|") // Non-voiced. Debug
 		} else {
 			fmt.Print("-") // Voiced. Debug
@@ -919,18 +920,19 @@ func play(synth []lpcFrame, word string, fp *os.File) {
 			// Generate source signal
 			if synth[frameNumber].period > 0 {
 				// Voiced source
-				u[10] = playChirp(frameNumber, interpolated, &periodCounter)
+				u[10] = playChirp(interpolated, &periodCounter)
 			} else {
 				// Unvoiced source
-				u[10] = playNoise(frameNumber, interpolated, &lfsr)
+				u[10] = playNoise(interpolated, &lfsr)
 			}
 			// Filter the signal
-			filter(frameNumber, interpolated, u, x)
+			filter(interpolated, u, x)
 
 			// Write the sample to file
 			writeInt16ToFile(int16(u[0]*128), fp)
 		}
 	}
+	fmt.Println("") // Debug
 }
 
 func makeInterpolatedFrame(frameNumber int, synth []lpcFrame, sampleInFrame int, samplesPerFrame int) lpcFrame {
@@ -986,7 +988,7 @@ func writeInt16ToFile(input int16, fp *os.File) {
 	fp.Write(intByteArray)
 }
 
-func playChirp(frameNumber int, synth lpcFrame, periodCounter *float32) float32 {
+func playChirp(synth lpcFrame, periodCounter *float32) float32 {
 	// Chirp waveform table
 	chirp := []float32{0, 42, -44, 50, -78, 18, 37, 20, 2, -31, -59, 2, 95, 90, 5, 15, 38, -4, -91, -91, -42, -35, -36, -4, 37, 43, 34, 33, 15, -1, -8, -18, -19, -17, -9, -10, -6, 0, 3, 2, 1}
 
@@ -1013,7 +1015,7 @@ func noteToPeriod(note float32) float32 {
 	return (SampleRate / float32(55*math.Pow(2, (float64(note)/12)))) - 1
 }
 
-func playNoise(frameNumber int, synth lpcFrame, lfsr *uint16) float32 {
+func playNoise(synth lpcFrame, lfsr *uint16) float32 {
 	var output float32
 	// Normal Galois configuration linear feedback shift register
 	var lsb uint16 = *lfsr & 1 // Get LSB (i.e., the output bit)
@@ -1030,7 +1032,7 @@ func playNoise(frameNumber int, synth lpcFrame, lfsr *uint16) float32 {
 	return output
 }
 
-func filter(frameNumber int, synth lpcFrame, u []float32, x []float32) {
+func filter(synth lpcFrame, u []float32, x []float32) {
 	// Lattice filter forward path
 	u[9] = u[10] - ((synth.k[9] * x[9]) / 128)
 	u[8] = u[9] - ((synth.k[8] * x[8]) / 128)
@@ -1066,7 +1068,8 @@ func filter(frameNumber int, synth lpcFrame, u []float32, x []float32) {
 }
 
 // Target stream : 8khz sampling rate, 16bit quantization
-// Voiceless consonants, which can hopefully be used in analysis
+
+// Phones for voiceless consonants, which can hopefully be used in analysis
 // p  -> p  -> pat
 // t  -> t  -> tall
 // k  -> k  -> cap
@@ -1077,3 +1080,7 @@ func filter(frameNumber int, synth lpcFrame, u []float32, x []float32) {
 // h  -> h  -> hot
 // tʃ -> ch -> chip
 // ð  -> th -> weather
+
+// Ideas for sequencing phones:
+// Each phone is a standard length, decided by tempo (except non-voiced), whose length can be manipulated individually or in groups with p{n} or (p p){n}.
+// The pitch can also be manipulated similarly, individually or in groups with p{n, t} or (p p){n, t}. The pitch can either be specified as a tone number (0,1,2,3, etc.) or as a note (A-0, A # 0, B-0, etc)
