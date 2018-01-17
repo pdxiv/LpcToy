@@ -1070,16 +1070,16 @@ func filter(synth lpcFrame, u []float32, x []float32) {
 // Target stream : 8khz sampling rate, 16bit quantization
 
 // Phones for voiceless consonants, which can hopefully be used in analysis
-// p  -> p  -> pat
-// t  -> t  -> tall
-// k  -> k  -> cap
-// f  -> f  -> fine
-// θ  -> th -> thin
-// s  -> s  -> sue
-// ʃ  -> sh -> shore
-// h  -> h  -> hot
-// tʃ -> ch -> chip
-// ð  -> th -> weather
+// p  -> P  -> pat
+// t  -> T  -> tall
+// k  -> K  -> cap
+// f  -> F  -> fine
+// θ  -> TH -> thin
+// s  -> S  -> sue
+// ʃ  -> SH -> shore
+// h  -> HH -> hot
+// tʃ -> CH -> chip
+// ð  -> DH -> weather
 
 // Ideas for sequencing phones:
 // Each phone is a standard length, decided by tempo (except non-voiced), whose length can be manipulated individually or in groups with p{n} or (p p){n}.
