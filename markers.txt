@@ -1,0 +1,644 @@
+ABORT	------------------xx||-x
+ABORT	AH B AO R T
+ABOVE	----------------x
+ABOVE	AH B AH V
+ACCELERATED	-----xx|||||-------------------x
+ACCELERATED	AE K S EH L ER EY T IH D
+ACKNOWLEDGE	------xx|-------------------||x
+ACKNOWLEDGE	AE K N AA L IH JH
+ACTION	-----|-x||||-------x
+ACTION	AE K SH AH N
+ADVISE	--------------------|||x
+ADVISE	AE D V AY Z
+AERIAL	---------------------x
+AERIAL	EH R IY AH L
+AFFIRMATIVE	---||||||-----------|||----------x
+AFFIRMATIVE	AH F ER M AH T IH V
+AIRCRAFT	--------x|||-------||||-xx||-x
+AIRCRAFT	EH R K R AE F T
+AIRPORT	-------xx|||-------xxx||x
+AIRPORT	EH R P AO R T
+AIRSPEED	--------||||||-----------x
+AIRSPEED	EH R S P IY D
+ALERT	--------------xxx||-x
+ALERT	AH L ER T
+ALL	AO L
+ALL	|-------------x
+ALOFT	---------------||||-xx||-x
+ALOFT	AH L AO F T
+ALPHA	--------||||-------x
+ALPHA	AE L F AH
+ALTERNATE	-------|||----------xx||-x
+ALTERNATE	AO L T ER N AH T
+ALTIMETER	------x||-----------------x
+ALTIMETER	AE L T IH M AH T ER
+ALTITUDE	-------x|----x||----------|-x
+ALTITUDE	AE L T AH T UW D
+AND	-----------x
+AND	AH N D
+ANSWER	----------||||------x
+ANSWER	AE N S ER
+APPROACH	------x||--------x|||||||||x
+APPROACH	AH P R OW CH
+APPROACHES	------xx||-------|||---------|||x
+APPROACHES	AH P R OW CH IH Z
+AREA	---------------x
+AREA	EH R IY AH
+ARRIVAL	-------------------------x
+ARRIVAL	ER AY V AH L
+AS	--------||x
+AS	AE Z
+AT	-------xx|||x
+AT	AE T
+AUTOPILOT	------------x|------------x
+AUTOPILOT	AO T OW P AY L AH T
+BANK	---------------xx||||x
+BANK	B AE NG K
+BARKER	----------x|||-------x
+BARKER	B AA R K ER
+BASE	B EY S
+BASE	|-------|||x
+BELOW	B IH L OW
+BELOW	|-------------------x
+BLOWING	B L OW IH NG
+BLOWING	|-------------------x
+BOOST	B UW S T
+BOOST	|-------|||||||-xx||x
+BRAKE	-------------xx|||x
+BRAKE	B R EY K
+BRAVO	B R AA V OW
+BRAVO	|---------------------x
+BREAKING	B R EY K IH NG
+BREAKING	|-------||---------x
+BROKEN	B R OW K AH N
+BROKEN	|-----x||--------x
+BY	------------------x
+BY	B AY
+CABIN	K AE B AH N
+CABIN	|||----------------x
+CALL	K AO L
+CALL	||---------------x
+CALM	K AA M
+CALM	|||------------------x
+CANCEL	K AE N S AH L
+CANCEL	|||---------||||---------x
+CAUTION	K AA SH AH N
+CAUTION	|||-----||||----------x
+CEILING	S IY L IH NG
+CEILING	|||||--------------x
+CENTRE	S EH N T ER
+CENTRE	|||||------x||---------x
+CHARLIE	CH AA R L IY
+CHARLIE	|||--------------x
+CHECK	CH EH K
+CHECK	||----------xx||||x
+CLEAR	K L IH R
+CLEAR	||||------------x
+CLEARANCE	K L IH R AH N S
+CLEARANCE	||-------------|||||||x
+CLIMB	K L AY M
+CLIMB	|||-----------------x
+CLOSE	K L OW S
+CLOSE	||||--------------------x
+CONTACT	K AA N T AE K T
+CONTACT	||---------|-------xxxx||x
+CONTROL	K AH N T R OW L
+CONTROL	|-------|||----------x
+CONVERGING	K AH N V ER JH IH NG
+CONVERGING	||----------------|-------x
+COURSE	K AO R S
+COURSE	||-------|||||||x
+COWL	K AW L
+COWL	|||--------------x
+CRYSTALS	K R IH S T AH L Z
+CRYSTALS	||----||||--------|||x
+CURRENT	K ER AH N T
+CURRENT	||---------xx||x
+CYCLE	S AY K AH L
+CYCLE	||||||------x|------x
+CYLINDER	S IH L AH N D ER
+CYLINDER	|||||------------------x
+D	D IY
+D	||-------x
+DANGER	D EY N JH ER
+DANGER	|-----------|-----------x
+DECREASE	D IH K R IY S
+DECREASE	|-----x|||------|||||||x
+DECREASING	D IH K R IY S IH NG
+DECREASING	|-------x|||-----||||-----------x
+DEGREE	D IH G R IY
+DEGREE	|-----x------------x
+DEGREES	D IH G R IY Z
+DEGREES	|----------------------------||||x
+DELTA	D EH L T AH
+DELTA	|-------|||------x
+DEPARTURE	D IH P AA R CH ER
+DEPARTURE	|-----x|-------x|||------x
+DIVIDED	D IH V AY D IH D
+DIVIDED	|-----------------x
+DOORS	D AO R Z
+DOORS	|---------------------||x
+DOWN	D AW N
+DOWN	|---------------x
+DOWNWIND	D AW N W IH N D
+DOWNWIND	|-----------------------x
+DRIZZLE	---------|------x
+DRIZZLE	D R IH Z AH L
+EAST	---------|||||||-x||-x
+EAST	IY S T
+ECHO	-----xx||-----------x
+ECHO	EH K OW
+EIGHT	---------xxx||x
+EIGHT	EY T
+EIGHTEEN	-------xx||----------x
+EIGHTEEN	EY T IY N
+EIGHTY	------|-------x
+EIGHTY	EY T IY
+ELEVATION	----------------||||----------x
+ELEVATION	EH L AH V EY SH AH N
+ELEVEN	----------------------x
+ELEVEN	IH L EH V AH N
+EMERGENCY	---------------|-------||||-------x
+EMERGENCY	IH M ER JH AH N S IY
+ENGINE	----------|-----------x
+ENGINE	EH N JH AH N
+EQUALS	-------xx||--------------||x
+EQUALS	IY K W AH L Z
+ERROR	----------------x
+ERROR	EH R ER
+ESTIMATED	------||||--------------x
+ESTIMATED	EH S T AH M EY T AH D
+EVACUATE	---------------x||-------------xxx||x
+EVACUATE	IH V AE K Y AH EY T
+EVACUATION	-------------x|||---------|||||---------x
+EVACUATION	IH V AE K Y AH W EY SH AH N
+EXPECT	---||||||-x|-------xxxx||-x
+EXPECT	IH K S P EH K T
+FAILURE	F EY L Y ER
+FAILURE	|||||---------------x
+FIFTEEN	F IH F T IY N
+FIFTEEN	|||----||-xx|-------------x
+FIFTY	F IH F T IY
+FIFTY	||||||---|||-x|-------x
+FILED	F AY L D
+FILED	||||-----------------|-x
+FINAL	F AY N AH L
+FINAL	|||||--------------x
+FIVE	F AY V
+FIVE	||||||---------------------x
+FLAPS	F L AE P S
+FLAPS	||||------------xxxx||||||x
+FLIGHT	F L AY T
+FLIGHT	||||-----------xx||x
+FOG	F AA G
+FOG	|||||-------------|-x
+FOR	F AO R
+FOR	|||--------x
+FOUR	F AO R
+FOUR	||||---------------x
+FOURTEEN	F AO R T IY N
+FOURTEEN	|||||-------xxxx|||-------------x
+FOXTROT	F AA K S T R AA T
+FOXTROT	|||-----|||||||-x|||----------xxx||x
+FREEDOM	F R IY D AH M
+FREEDOM	||||-----------------x
+FREEZING	F R IY Z IH NG
+FREEZING	||||-------------------x
+FRONT	F R AH N T
+FRONT	|||||---------xx||-x
+FUEL	F Y UW AH L
+FUEL	||||------------x
+FULL	F UH L
+FULL	|||||-----------x
+GALLEY	G AE L IY
+GALLEY	|-------------x
+GAS	G AE S
+GAS	||-----------||||x
+GEAR	-------------x
+GEAR	G IH R
+GLIDE	G L AY D
+GLIDE	|---------------------x
+GOLF	G AA L F
+GOLF	|-------------||||||x
+GREAT	--------------xxx|||||x
+GREAT	G R EY T
+GREEN	--------------------x
+GREEN	G R IY N
+GREENWICH	G R EH N IH CH
+GREENWICH	|-------------x|||||||x
+GROUND	G R AW N D
+GROUND	|--------------x
+GUST	G AH S T
+GUST	|------||||||||-x||-x
+HAIL	HH EY L
+HAIL	||-----------------x
+HAVE	HH AE V
+HAVE	||-----------|||x
+HAZE	HH EY Z
+HAZE	||-----------------|||x
+HEADING	HH EH D IH NG
+HEADING	||--------------x
+HEAT	HH IY T
+HEAT	||||--------xxx|||x
+HEAVY	HH EH V IY
+HEAVY	||-----------x
+HERTZ	HH EH R T S
+HERTZ	|||-------xx||||||||||x
+HIGH	-----------------x
+HIGH	HH AY
+HOLD	HH OW L D
+HOLD	||---------------x
+HOTEL	HH OW T EH L
+HOTEL	|||-------xx|||-----------x
+HOUR	-----------------x
+HOUR	AW ER
+HOURS	--------------------||||x
+HOURS	AW ER Z
+HUNDRED	HH AH N D R AH D
+HUNDRED	||||----------------x---x
+ICE	---------||||||||||x
+ICE	AY S
+ICING	-------|||||---------x
+ICING	AY S IH NG
+IDLE	-------|---------x
+IDLE	AY D AH L
+IGNITE	-------x-----------xxxx||x
+IGNITE	IH G N AY T
+IGNITION	--------------|||--------x
+IGNITION	IH G N IH SH AH N
+IMMEDIATELY	-------------------x||---------x
+IMMEDIATELY	IH M IY D IY AH T L IY
+IN	------------x
+IN	IH N
+INBOUND	----------------------------------x
+INBOUND	IH N B AW N D
+INCREASE	--------x|||------||||||x
+INCREASE	IH N K R IY S
+INCREASING	-------x|||-----|||---------x
+INCREASING	IH N K R IY S IH NG
+INDIA	-------------------x
+INDIA	IH N D IY AH
+INDICATED	------------|------------x
+INDICATED	IH N D AH K EY T AH D
+INFLIGHT	----------|||||---------xx||-x
+INFLIGHT	IH N F L AY T
+INFORMATION	---------|---------||||------x
+INFORMATION	IH N F AO R M EY SH AH N
+INNER	------------x
+INNER	IH N ER
+INSTRUMENTS	--------||||||-----------xxx|||||||x
+INSTRUMENTS	IH N S T R AH M AH N T S
+IS	------------|||x
+IS	IH Z
+JULIET	-||------------------xxx|||||x
+JULIET	JH UW L IY EH T
+KEY	K IY
+KEY	|||---------x
+KILO	K IH L OW
+KILO	|||------------------x
+KNOTS	-------------xx||||||x
+KNOTS	N AA T S
+LAND	----------------|-x
+LAND	L AE N D
+LANDING	----------------------x
+LANDING	L AE N D IH NG
+LAUNCH	-----------x||||||||x
+LAUNCH	L AO N CH
+LEAN	-----------------x
+LEAN	L IY N
+LEFT	----------||||-xx||-x
+LEFT	L EH F T
+LEG	------------------x
+LEG	L EH G
+LEVEL	-----------------x
+LEVEL	L EH V AH L
+LIGHT	------------xx||-x
+LIGHT	L AY T
+LIGHTS	-----------xx|||||||x
+LIGHTS	L AY T S
+LIMA	-------------------x
+LIMA	L AY M AH
+LIST	-----------|||||||-xx||x
+LIST	L IH S T
+LONG	---------------x
+LONG	L AO NG
+LOW	----------------x
+LOW	L OW
+LOWER	------------------x
+LOWER	L OW ER
+MAINTAIN	-----------||---------------x
+MAINTAIN	M EY N T EY N
+MAYDAY	-----------|----------------x
+MAYDAY	M EY D EY
+MEAN	-------------------x
+MEAN	M IY N
+MEASURED	---------||-----------x
+MEASURED	M EH ZH ER D
+MIDDLE	----------------x
+MIDDLE	M IH D AH L
+MIDPOINT	------------|||---------|||x
+MIDPOINT	M IH D P OY N T
+MIKE	------------xxx||||x
+MIKE	M AY K
+MILES	---------------------||x
+MILES	M AY L Z
+MILLION	--------------------x
+MILLION	M IH L Y AH N
+MINUS	----------------||||||x
+MINUS	M AY N AH S
+MINUTES	--------------xxxx||||||||x
+MINUTES	M IH N AH T S
+MIST	-------------|||||||-xxx|||x
+MIST	M IH S T
+MIXTURE	-------x||||-x||---------x
+MIXTURE	M IH K S CH ER
+MODERATE	---------|---------xx|||x
+MODERATE	M AA D ER AH T
+MOVING	-----------------x
+MOVING	M UW V IH NG
+MUCH	---------x||||||||x
+MUCH	M AH CH
+NEAR	---------------x
+NEAR	N IH R
+NEGATIVE	-------------||--------|||x
+NEGATIVE	N EH G AH T IH V
+NEW	--------------------x
+NEW	N UW
+NINE	-----------------------x
+NINE	N AY N
+NINER	--------------------xx
+NINER	N AY N ER
+NINETEEN	----------xx||-------------x
+NINETEEN	N AY N T IY N
+NINETY	----------|------x
+NINETY	N AY N T IY
+NO	--------------x
+NO	N OW
+NORTH	---------------|||||x
+NORTH	N AO R TH
+NORTHEAST	------------||----------|||||||-xxx||x
+NORTHEAST	N AO R TH IY S T
+NORTHWEST	---------|||----------|||||-xx||-x
+NORTHWEST	N AO R TH W EH S T
+NOVEMBER	-----------------|-------x
+NOVEMBER	N OW V EH M B ER
+OBSCURED	-----||||||----------------|x
+OBSCURED	AH B S K Y UH R D
+OF	---------------------x
+OF	AH V
+OFF	----------|||||x
+OFF	AO F
+OIL	-------------x
+OIL	OY L
+ON	----------------x
+ON	AA N
+ONE	-------------------x
+ONE	W AH N
+OPEN	------xx--------x
+OPEN	OW P AH N
+OSCAR	-----|||||-x|------------x
+OSCAR	AO S K ER
+OTHER	----------------x
+OTHER	AH DH ER
+OUT	----------xxx||x
+OUT	AW T
+OUTER	--------|------x
+OUTER	AW T ER
+OVER	------------------x
+OVER	OW V ER
+OVERCAST	--------------x||-----------|||||||-xx||x
+OVERCAST	OW V ER K AE S T
+PAPA	P AA P AH
+PAPA	|------xx|------x
+PARTIALLY	P AA R SH AH L IY
+PARTIALLY	||-----|||||-----------x
+PATH	P AE TH
+PATH	||-----------|||||||x
+PELLETS	P EH L AH T S
+PELLETS	||-----------xx||||||x
+PER	P ER
+PER	|||---------x
+PERCENT	P ER S EH N T
+PERCENT	||-----||||||--------xxxx|||x
+PLAN	P L AE N
+PLAN	||----------------x
+PLEASE	P L IY Z
+PLEASE	|----------||x
+PLUS	P L AH S
+PLUS	||-------|||||x
+POINT	P OY N T
+POINT	||---------xx|||x
+POWER	P AW ER
+POWER	||---------------x
+PRESSURE	P R EH SH ER
+PRESSURE	|||-----||||--------x
+PUMPS	P AH M P S
+PUMPS	||---------xxxx|||||||x
+QUEBEC	K W AH B EH K
+QUEBEC	||---------------xx|||x
+RADAR	--------------------x
+RADAR	R EY D AA R
+RADIAL	------------------------x
+RADIAL	R EY D IY AH L
+RADIOS	--------------------------|x
+RADIOS	R EY D IY OW Z
+RAIN	--------------------x
+RAIN	R EY N
+RAISE	-----------------------||x
+RAISE	R EY Z
+READY	--------|-------x
+READY	R EH D IY
+REAR	--------------------x
+REAR	R IH R
+RED	-------------------x
+RED	R EH D
+RELEASE	----------------||||x
+RELEASE	R IY L IY S
+REMARK	----------------------xxxx||||x
+REMARK	R IH M AA R K
+REPAIR	-------||||------------x
+REPAIR	R IH P EH R
+RICH	------------x|||||||||x
+RICH	R IH CH
+RIGHT	-------------xxx|||x
+RIGHT	R AY T
+ROGER	-------------||------x
+ROGER	R AA JH ER
+ROMEO	----------------------x
+ROMEO	R OW M IY OW
+SAND	S AE N D
+SAND	|||||||-----------------|-x
+SCATTERED	S K AE T ER D
+SCATTERED	|||||-x|------|--------|-x
+SECURITY	S IH K Y UH R AH T IY
+SECURITY	||||----x|||-------||-----x
+SELECT	S AH L EH K T
+SELECT	|||||||----------xxxx||-x
+SEQUENCE	S IY K W AH N S
+SEQUENCE	|||||-----x||--------|||||||x
+SERVICE	S ER V AH S
+SERVICE	||||||------------|||||||x
+SET	S EH T
+SET	|||||||------xxx||x
+SEVEN	S EH V AH N
+SEVEN	|||||||-----------x
+SEVENTEEN	S EH V AH N T IY N
+SEVENTEEN	||||||---------x|-------------x
+SEVENTY	S EH V AH N T IY
+SEVENTY	||||||---------|--------x
+SEVERE	S AH V IH R
+SEVERE	|||||-------------x
+SHORT	SH AO R T
+SHORT	|||||||-------xxx||-x
+SHOWERS	SH AW ER Z
+SHOWERS	||||||||-------------------||x
+SIDE	S AY D
+SIDE	||||------------x
+SIERRA	S IY EH R AH
+SIERRA	||||||---------------------x
+SIGNET	S IH G N IH T
+SIGNET	||||||---------------xxx|||x
+SIX	S IH K S
+SIX	||||||------xxx|||||||x
+SIXTEEN	S IH K S T IY N
+SIXTEEN	|||||||----x||||||-----------x
+SIXTY	S IH K S T IY
+SIXTY	|||||----x|||-x||------x
+SLEET	S L IY T
+SLEET	|||||||----------xxx||-x
+SLOW	S L OW
+SLOW	||||||----------x
+SMOKE	S M OW K
+SMOKE	||||||||-----------xxx||||x
+SNOW	S N OW
+SNOW	||||||-----------------x
+SOUTH	S AW TH
+SOUTH	|||||||----------|||||x
+SOUTHEAST	S AW TH IY S T
+SOUTHEAST	|||||||-------|||---------|||||||-xxx||x
+SOUTHWEST	S AW TH W EH S T
+SOUTHWEST	||||||||-------||----------|||||||-xxx||x
+SPEED	S P IY D
+SPEED	|||||-xx|------------|-x
+SPOILERS	S P OY L ER Z
+SPOILERS	||||||-x|----------------------||x
+SQUALK	|||||-xx|--------xx||||x
+SQUALKING	||||-|||------x||-------x
+STALL	S T AO L
+STALL	|||||-x||----------------x
+START	S T AA R T
+START	|||||||---------xx||-x
+STOP	S T AA P
+STOP	||||||-x|---------xx||x
+STORM	S T AO R M
+STORM	||||||-x|-----------------x
+STRAY	S T R EY
+STRAY	||||||-x|------------------x
+TANGO	T AE NG G OW
+TANGO	||------------------x
+TARGET	T AA R G AH T
+TARGET	|||-------------xxx||-x
+TAXI	T AE K S IY
+TAXI	||-----x||||---------x
+TELEPHONE	T EH L AH F OW N
+TELEPHONE	||-------||||--------------x
+TEMPERATURE	T EH M P R AH CH ER
+TEMPERATURE	||------x|----x||||---------x
+TEN	T EH N
+TEN	||-------------x
+TERMINAL	T ER M AH N AH L
+TERMINAL	|||-------------------x
+THE	DH AH
+THE	||-----x
+THIN	TH IH N
+THIN	|||||-------x
+THINLY	TH IH N L IY
+THINLY	|||-------------x
+THIRTEEN	TH ER T IY N
+THIRTEEN	||||------xxxx|||------------x
+THIRTY	TH ER D IY
+THIRTY	||||-----||------x
+THOUSAND	TH AW Z AH N D
+THOUSAND	|||||-----------||-------------x
+THREE	TH R IY
+THREE	|||||-----------------x
+THUNDERSTORM	TH AH N D ER S T AO R M
+THUNDERSTORM	|||----------|||||----------------||x
+TIME	T AY M
+TIME	|||---------------x
+TIMES	T AY M Z
+TIMES	|||---------------------||x
+TO	T UW
+TO	||------x
+TORNADO	T AO R N EY D OW
+TORNADO	||-----------------------x
+TOUCHDOWN	T AH CH D AW N
+TOUCHDOWN	||----||||||||--------------x
+TOWER	T AW ER
+TOWER	||---------------x
+TRAFFIC	T R AE F IH K
+TRAFFIC	||||-----|||-----x||||x
+TRIM	T R IH M
+TRIM	|||-----------x
+TRUE	T R UW
+TRUE	||||---------x
+TURN	T ER N
+TURN	|||-----------x
+TWELVE	T W EH L V
+TWELVE	|||-------------------x
+TWENTY	T W EH N T IY
+TWENTY	||||-------|-------x
+TWO	T UW
+TWO	|||-------------x
+UNDERCARRIAGE	-------------x|||--------------x|||-x
+UNDERCARRIAGE	AH N D ER K AE R IH JH
+UNICOM	-----------xx||--------------x
+UNICOM	Y UW N IH K AO M
+UNIFORM	------------||||----------------x
+UNIFORM	Y UW N AH F AO R M
+UNLIMITED	--------------------x||--------x
+UNLIMITED	AH N L IH M AH T AH D
+UP	--------xxxx|||x
+UP	AH P
+USE	--------|||||||x
+USE	Y UW S
+VACUUM	---------x|||---------x
+VACUUM	V AE K Y UW M
+VECTORS	----------x|-x|-----||||x
+VECTORS	V EH K T ER Z
+VERIFY	------------||||----------x
+VERIFY	V EH R AH F AY
+VICTOR	-------x|-xxx||--------x
+VICTOR	V IH K T ER
+VISIBILITY	---------|-------------|------x
+VISIBILITY	V IH Z AH B IH L IH T IY
+WAKE	-------------xx|||x
+WAKE	W EY K
+WARNING	------------------------x
+WARNING	W AO R N IH NG
+WATCH	-------xxxx||||||x
+WATCH	W AA CH
+WAY	-----------x
+WAY	W EY
+WEATHER	----------------------x
+WEATHER	W EH DH ER
+WEST	-----------|||||||-xx||x
+WEST	W EH S T
+WHISKEY	W IH S K IY
+WHISKEY	|||-----||||x||---------x
+WHITE	----------xxx||-x
+WHITE	W AY T
+WIND	-------------------|-x
+WIND	W AY N D
+WINDOWS	-----------------------|||x
+WINDOWS	W IH N D OW Z
+YELLOW	-------------------x
+YELLOW	Y EH L OW
+YOU	---------x
+YOU	Y UW
+ZERO	---||------------------x
+ZERO	Z IY R OW
+ZONE	--|||-----------------x
+ZONE	Z OW N
+ZULU	-||---------------x
+ZULU	Z UW L UW
