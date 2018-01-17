@@ -1088,6 +1088,14 @@ func filter(synth lpcFrame, u []float32, x []float32) {
 // List of identified phone breakdowns of available words. In the best case,
 // these will correlate with the voiced/unvoiced patterns in the LPC data, and
 // will enable us to translate phonetic dictionary into LPC frames.
+// For instance:
+// "OUTER" -> "AW T ER" will let us extract three phones.
+// "UP"    -> "AH P"    will let us extract two phones
+
+// Partial matches can also be inferred, if some phones in the LPC data are
+// mis-pronounced as voiceless, like the "V" being pronounced as "F"
+// "HAVE"  -> "HH AE V" will let us extract two phones, but not "V"
+
 // ABORT  AH B AO R T
 // ABOVE  AH B AH V
 // ACCELERATED  AE K S EH L ER EY T IH D
