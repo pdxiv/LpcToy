@@ -1073,17 +1073,56 @@ func filter(synth lpcFrame, u []float32, x []float32) {
 // Each phone is a standard length, decided by tempo (except non-voiced), whose length can be manipulated individually or in groups with p{n} or (p p){n}.
 // The pitch can also be manipulated similarly, individually or in groups with p{n, t} or (p p){n, t}. The pitch can either be specified as a tone number (0,1,2,3, etc.) or as a note (A-0, A # 0, B-0, etc)
 
-// Phones for voiceless consonants, which can hopefully be used in analysis
-// p  -> P  -> pat
-// t  -> T  -> tall
-// k  -> K  -> cap
-// f  -> F  -> fine
-// θ  -> TH -> thin
-// s  -> S  -> sue
-// ʃ  -> SH -> shore
-// h  -> HH -> hot
-// tʃ -> CH -> chip
-// ð  -> DH -> weather
+
+// For extraction of data, words in list are converted to ARPABET format phones
+
+// Phones for voiceless consonants, which can be used in analysis:
+// B CH D DH F G HH JH K P S SH T TH V Z ZH
+
+// Phones for voiced, which can be used in analysis:
+// AA AE AH AO AW AY EH ER EY IH IY L M N NG OW OY R UH UW W Y 
+
+// Phoneme Example Translation
+// ------- ------- -----------
+// AA      odd     AA D
+// AE      at      AE T
+// AH      hut     HH AH T
+// AO      ought   AO T
+// AW      cow     K AW
+// AY      hide    HH AY D
+// B       be      B IY
+// CH      cheese  CH IY Z
+// D       dee     D IY
+// DH      thee    DH IY
+// EH      Ed      EH D
+// ER      hurt    HH ER T
+// EY      ate     EY T
+// F       fee     F IY
+// G       green   G R IY N
+// HH      he      HH IY
+// IH      it      IH T
+// IY      eat     IY T
+// JH      gee     JH IY
+// K       key     K IY
+// L       lee     L IY
+// M       me      M IY
+// N       knee    N IY
+// NG      ping    P IH NG
+// OW      oat     OW T
+// OY      toy     T OY
+// P       pee     P IY
+// R       read    R IY D
+// S       sea     S IY
+// SH      she     SH IY
+// T       tea     T IY
+// TH      theta   TH EY T AH
+// UH      hood    HH UH D
+// UW      two     T UW
+// V       vee     V IY
+// W       we      W IY
+// Y       yield   Y IY L D
+// Z       zee     Z IY
+// ZH      seizure S IY ZH ER
 
 // List of identified phone breakdowns of available words. In the best case,
 // these will correlate with the voiced/unvoiced patterns in the LPC data, and
