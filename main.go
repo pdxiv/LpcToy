@@ -1069,6 +1069,10 @@ func filter(synth lpcFrame, u []float32, x []float32) {
 
 // Target stream : 8khz sampling rate, 16bit quantization
 
+// Ideas for sequencing phones:
+// Each phone is a standard length, decided by tempo (except non-voiced), whose length can be manipulated individually or in groups with p{n} or (p p){n}.
+// The pitch can also be manipulated similarly, individually or in groups with p{n, t} or (p p){n, t}. The pitch can either be specified as a tone number (0,1,2,3, etc.) or as a note (A-0, A # 0, B-0, etc)
+
 // Phones for voiceless consonants, which can hopefully be used in analysis
 // p  -> P  -> pat
 // t  -> T  -> tall
@@ -1081,6 +1085,329 @@ func filter(synth lpcFrame, u []float32, x []float32) {
 // tʃ -> CH -> chip
 // ð  -> DH -> weather
 
-// Ideas for sequencing phones:
-// Each phone is a standard length, decided by tempo (except non-voiced), whose length can be manipulated individually or in groups with p{n} or (p p){n}.
-// The pitch can also be manipulated similarly, individually or in groups with p{n, t} or (p p){n, t}. The pitch can either be specified as a tone number (0,1,2,3, etc.) or as a note (A-0, A # 0, B-0, etc)
+// List of identified phone breakdowns of available words. In the best case,
+// these will correlate with the voiced/unvoiced patterns in the LPC data, and
+// will enable us to translate phonetic dictionary into LPC frames.
+// ABORT  AH B AO R T
+// ABOVE  AH B AH V
+// ACCELERATED  AE K S EH L ER EY T IH D
+// ACKNOWLEDGE  AE K N AA L IH JH
+// ACTION  AE K SH AH N
+// ADVISE  AE D V AY Z
+// AERIAL  EH R IY AH L
+// AFFIRMATIVE  AH F ER M AH T IH V
+// AIR  EH R
+// AIRCRAFT  EH R K R AE F T
+// AIRPORT  EH R P AO R T
+// AIRSPEED  EH R S P IY D
+// ALERT  AH L ER T
+// ALL  AO L
+// ALOFT  AH L AO F T
+// ALPHA  AE L F AH
+// ALTERNATE  AO L T ER N AH T
+// ALTIMETER  AE L T IH M AH T ER
+// ALTITUDE  AE L T AH T UW D
+// AND  AH N D
+// ANSWER  AE N S ER
+// APPROACH  AH P R OW CH
+// APPROACHES  AH P R OW CH IH Z
+// AREA  EH R IY AH
+// ARRIVAL  ER AY V AH L
+// AS  AE Z
+// AT  AE T
+// AUTOPILOT  AO T OW P AY L AH T
+// BANK  B AE NG K
+// BARKER  B AA R K ER
+// BASE  B EY S
+// BELOW  B IH L OW
+// BLOWING  B L OW IH NG
+// BOOST  B UW S T
+// BRAKE  B R EY K
+// BRAVO  B R AA V OW
+// BREAKING  B R EY K IH NG
+// BROKEN  B R OW K AH N
+// BY  B AY
+// CABIN  K AE B AH N
+// CALL  K AO L
+// CALM  K AA M
+// CANCEL  K AE N S AH L
+// CAUTION  K AA SH AH N
+// CEILING  S IY L IH NG
+// CENTRE  S EH N T ER
+// CHARLIE  CH AA R L IY
+// CHECK  CH EH K
+// CLEAR  K L IH R
+// CLEARANCE  K L IH R AH N S
+// CLIMB  K L AY M
+// CLOSE  K L OW S
+// CONTACT  K AA N T AE K T
+// CONTROL  K AH N T R OW L
+// CONVERGING  K AH N V ER JH IH NG
+// COURSE  K AO R S
+// COWL  K AW L
+// CRYSTALS  K R IH S T AH L Z
+// CURRENT  K ER AH N T
+// CYCLE  S AY K AH L
+// CYLINDER  S IH L AH N D ER
+// D  D IY
+// DANGER  D EY N JH ER
+// DECREASE  D IH K R IY S
+// DECREASING  D IH K R IY S IH NG
+// DEGREE  D IH G R IY
+// DEGREES  D IH G R IY Z
+// DELTA  D EH L T AH
+// DEPARTURE  D IH P AA R CH ER
+// DIVIDED  D IH V AY D IH D
+// DOORS  D AO R Z
+// DOWN  D AW N
+// DOWNWIND  D AW N W IH N D
+// DRIZZLE  D R IH Z AH L
+// EAST  IY S T
+// ECHO  EH K OW
+// EIGHT  EY T
+// EIGHTEEN  EY T IY N
+// EIGHTY  EY T IY
+// ELEVATION  EH L AH V EY SH AH N
+// ELEVEN  IH L EH V AH N
+// EMERGENCY  IH M ER JH AH N S IY
+// ENGINE  EH N JH AH N
+// EQUALS  IY K W AH L Z
+// ERROR  EH R ER
+// ESTIMATED  EH S T AH M EY T AH D
+// EVACUATE  IH V AE K Y AH EY T
+// EVACUATION  IH V AE K Y AH W EY SH AH N
+// EXPECT  IH K S P EH K T
+// FAILURE  F EY L Y ER
+// FIFTEEN  F IH F T IY N
+// FIFTY  F IH F T IY
+// FILED  F AY L D
+// FINAL  F AY N AH L
+// FIVE  F AY V
+// FLAPS  F L AE P S
+// FLIGHT  F L AY T
+// FOG  F AA G
+// FOR  F AO R
+// FOUR  F AO R
+// FOURTEEN  F AO R T IY N
+// FOXTROT  F AA K S T R AA T
+// FREEDOM  F R IY D AH M
+// FREEZING  F R IY Z IH NG
+// FRONT  F R AH N T
+// FUEL  F Y UW AH L
+// FULL  F UH L
+// GALLEY  G AE L IY
+// GAS  G AE S
+// GEAR  G IH R
+// GLIDE  G L AY D
+// GOLF  G AA L F
+// GREAT  G R EY T
+// GREEN  G R IY N
+// GREENWICH  G R EH N IH CH
+// GROUND  G R AW N D
+// GUST  G AH S T
+// HAIL  HH EY L
+// HAVE  HH AE V
+// HAZE  HH EY Z
+// HEADING  HH EH D IH NG
+// HEAT  HH IY T
+// HEAVY  HH EH V IY
+// HERTZ  HH EH R T S
+// HIGH  HH AY
+// HOLD  HH OW L D
+// HOTEL  HH OW T EH L
+// HOUR  AW ER
+// HOURS  AW ER Z
+// HUNDRED  HH AH N D R AH D
+// ICE  AY S
+// ICING  AY S IH NG
+// IDENTIFY  AY D EH N T AH F AY
+// IDLE  AY D AH L
+// IGNITE  IH G N AY T
+// IGNITION  IH G N IH SH AH N
+// IMMEDIATELY  IH M IY D IY AH T L IY
+// IN  IH N
+// INBOUND  IH N B AW N D
+// INCREASE  IH N K R IY S
+// INCREASING  IH N K R IY S IH NG
+// INDIA  IH N D IY AH
+// INDICATED  IH N D AH K EY T AH D
+// INFLIGHT  IH N F L AY T
+// INFORMATION  IH N F AO R M EY SH AH N
+// INNER  IH N ER
+// INSTRUMENTS  IH N S T R AH M AH N T S
+// IS  IH Z
+// JULIET  JH UW L IY EH T
+// KEY  K IY
+// KILO  K IH L OW
+// KNOTS  N AA T S
+// LAND  L AE N D
+// LANDING  L AE N D IH NG
+// LAUNCH  L AO N CH
+// LEAN  L IY N
+// LEFT  L EH F T
+// LEG  L EH G
+// LEVEL  L EH V AH L
+// LIGHT  L AY T
+// LIGHTS  L AY T S
+// LIMA  L AY M AH
+// LIST  L IH S T
+// LONG  L AO NG
+// LOW  L OW
+// LOWER  L OW ER
+// MAINTAIN  M EY N T EY N
+// MAYDAY  M EY D EY
+// MEAN  M IY N
+// MEASURED  M EH ZH ER D
+// MIDDLE  M IH D AH L
+// MIDPOINT  M IH D P OY N T
+// MIKE  M AY K
+// MILES  M AY L Z
+// MILLION  M IH L Y AH N
+// MINUS  M AY N AH S
+// MINUTES  M IH N AH T S
+// MIST  M IH S T
+// MIXTURE  M IH K S CH ER
+// MODERATE  M AA D ER AH T
+// MOVING  M UW V IH NG
+// MUCH  M AH CH
+// NEAR  N IH R
+// NEGATIVE  N EH G AH T IH V
+// NEW  N UW
+// NINE  N AY N
+// NINER  N AY N ER
+// NINETEEN  N AY N T IY N
+// NINETY  N AY N T IY
+// NO  N OW
+// NORTH  N AO R TH
+// NORTHEAST  N AO R TH IY S T
+// NORTHWEST  N AO R TH W EH S T
+// NOVEMBER  N OW V EH M B ER
+// OBSCURED  AH B S K Y UH R D
+// OF  AH V
+// OFF  AO F
+// OIL  OY L
+// ON  AA N
+// ONE  W AH N
+// OPEN  OW P AH N
+// OSCAR  AO S K ER
+// OTHER  AH DH ER
+// OUT  AW T
+// OUTER  AW T ER
+// OVER  OW V ER
+// OVERCAST  OW V ER K AE S T
+// PAPA  P AA P AH
+// PARTIALLY  P AA R SH AH L IY
+// PATH  P AE TH
+// PELLETS  P EH L AH T S
+// PER  P ER
+// PERCENT  P ER S EH N T
+// PLAN  P L AE N
+// PLEASE  P L IY Z
+// PLUS  P L AH S
+// POINT  P OY N T
+// POWER  P AW ER
+// PRESSURE  P R EH SH ER
+// PUMPS  P AH M P S
+// QUEBEC  K W AH B EH K
+// RADAR  R EY D AA R
+// RADIAL  R EY D IY AH L
+// RADIOS  R EY D IY OW Z
+// RAIN  R EY N
+// RAISE  R EY Z
+// READY  R EH D IY
+// REAR  R IH R
+// RED  R EH D
+// RELEASE  R IY L IY S
+// REMARK  R IH M AA R K
+// REPAIR  R IH P EH R
+// RICH  R IH CH
+// RIGHT  R AY T
+// ROGER  R AA JH ER
+// ROMEO  R OW M IY OW
+// SAND  S AE N D
+// SCATTERED  S K AE T ER D
+// SECURITY  S IH K Y UH R AH T IY
+// SELECT  S AH L EH K T
+// SEQUENCE  S IY K W AH N S
+// SERVICE  S ER V AH S
+// SET  S EH T
+// SEVEN  S EH V AH N
+// SEVENTEEN  S EH V AH N T IY N
+// SEVENTY  S EH V AH N T IY
+// SEVERE  S AH V IH R
+// SHORT  SH AO R T
+// SHOWERS  SH AW ER Z
+// SIDE  S AY D
+// SIERRA  S IY EH R AH
+// SIGNET  S IH G N IH T
+// SIX  S IH K S
+// SIXTEEN  S IH K S T IY N
+// SIXTY  S IH K S T IY
+// SLEET  S L IY T
+// SLOW  S L OW
+// SMOKE  S M OW K
+// SNOW  S N OW
+// SOUTH  S AW TH
+// SOUTHEAST  S AW TH IY S T
+// SOUTHWEST  S AW TH W EH S T
+// SPEED  S P IY D
+// SPOILERS  S P OY L ER Z
+// STALL  S T AO L
+// START  S T AA R T
+// STOP  S T AA P
+// STORM  S T AO R M
+// STRAY  S T R EY
+// TANGO  T AE NG G OW
+// TARGET  T AA R G AH T
+// TAXI  T AE K S IY
+// TELEPHONE  T EH L AH F OW N
+// TEMPERATURE  T EH M P R AH CH ER
+// TEN  T EH N
+// TERMINAL  T ER M AH N AH L
+// THE  DH AH
+// THIN  TH IH N
+// THINLY  TH IH N L IY
+// THIRTEEN  TH ER T IY N
+// THIRTY  TH ER D IY
+// THOUSAND  TH AW Z AH N D
+// THREE  TH R IY
+// THUNDERSTORM  TH AH N D ER S T AO R M
+// TIME  T AY M
+// TIMES  T AY M Z
+// TO  T UW
+// TORNADO  T AO R N EY D OW
+// TOUCHDOWN  T AH CH D AW N
+// TOWER  T AW ER
+// TRAFFIC  T R AE F IH K
+// TRIM  T R IH M
+// TRUE  T R UW
+// TURN  T ER N
+// TWELVE  T W EH L V
+// TWENTY  T W EH N T IY
+// TWO  T UW
+// UNDERCARRIAGE  AH N D ER K AE R IH JH
+// UNICOM  Y UW N IH K AO M
+// UNIFORM  Y UW N AH F AO R M
+// UNLIMITED  AH N L IH M AH T AH D
+// UP  AH P
+// USE  Y UW S
+// VACUUM  V AE K Y UW M
+// VECTORS  V EH K T ER Z
+// VERIFY  V EH R AH F AY
+// VICTOR  V IH K T ER
+// VISIBILITY  V IH Z AH B IH L IH T IY
+// WAKE  W EY K
+// WARNING  W AO R N IH NG
+// WATCH  W AA CH
+// WAY  W EY
+// WEATHER  W EH DH ER
+// WEST  W EH S T
+// WHISKEY  W IH S K IY
+// WHITE  W AY T
+// WIND  W AY N D
+// WINDOWS  W IH N D OW Z
+// YELLOW  Y EH L OW
+// YOU  Y UW
+// ZERO  Z IY R OW
+// ZONE  Z OW N
+// ZULU  Z UW L UW
