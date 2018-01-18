@@ -3,15 +3,16 @@ package main
 import (
 	"bytes"
 	"encoding/binary"
+	"encoding/json"
 	"fmt"
 	"math"
 	"os"
 )
 
 type lpcFrame struct {
-	period float32
-	energy float32
-	k      []float32
+	Period float32
+	Energy float32
+	K      []float32
 }
 
 const Coefficients = 10
@@ -803,63 +804,74 @@ func loadWordFrames(word []uint8) []lpcFrame {
 	var energy uint8
 	var tempSynth lpcFrame
 	for energy != 0xf {
-		tempSynth.k = make([]float32, 0)
+		tempSynth.K = make([]float32, 0)
 		var repeat uint8
 		// Read speech data, processing the variable size frames
 		energy = getBits(&bitIndex, 4, word)
 		// Energy = 0: rest frame
 		if energy == 0 {
-			tempSynth.energy = 0
+			tempSynth.Energy = 0
 
 			// Not sure if/why the below three lines work lol
-			constants := len(synth[len(synth)-1].k)
-			tempSynth.k = make([]float32, constants)
-			copy(tempSynth.k, synth[len(synth)-1].k)
+			constants := len(synth[len(synth)-1].K)
+			tempSynth.K = make([]float32, constants)
+			copy(tempSynth.K, synth[len(synth)-1].K)
 
 			// Energy = 15: stop frame. Silence the synthesiser
 		} else if energy == 0xf {
-			tempSynth.energy = 0
-			tempSynth.k = tempSynth.k[:0]
+			tempSynth.Energy = 0
+			tempSynth.K = tempSynth.K[:0]
 			for i := 0; i < Coefficients; i++ {
-				tempSynth.k = append(tempSynth.k, 0)
+				tempSynth.K = append(tempSynth.K, 0)
 			}
 		} else {
-			tempSynth.energy = lookupEnergy[energy]
+			tempSynth.Energy = lookupEnergy[energy]
 			repeat = getBits(&bitIndex, 1, word)
-			tempSynth.period = lookupPeriod[getBits(&bitIndex, 6, word)]
+			tempSynth.Period = lookupPeriod[getBits(&bitIndex, 6, word)]
 
 			// A repeat frame uses the last coefficients
 
 			if repeat == 0 {
-				tempSynth.k = tempSynth.k[:0]
+				tempSynth.K = tempSynth.K[:0]
 				// All frames use the first 4 coefficients
-				tempSynth.k = append(tempSynth.k, float32(lookupK[0][getBits(&bitIndex, 5, word)]))
-				tempSynth.k = append(tempSynth.k, float32(lookupK[1][getBits(&bitIndex, 5, word)]))
-				tempSynth.k = append(tempSynth.k, float32(lookupK[2][getBits(&bitIndex, 4, word)]))
-				tempSynth.k = append(tempSynth.k, float32(lookupK[3][getBits(&bitIndex, 4, word)]))
+				tempSynth.K = append(tempSynth.K, float32(lookupK[0][getBits(&bitIndex, 5, word)]))
+				tempSynth.K = append(tempSynth.K, float32(lookupK[1][getBits(&bitIndex, 5, word)]))
+				tempSynth.K = append(tempSynth.K, float32(lookupK[2][getBits(&bitIndex, 4, word)]))
+				tempSynth.K = append(tempSynth.K, float32(lookupK[3][getBits(&bitIndex, 4, word)]))
 				// Voiced frames use 6 extra coefficients
-				if tempSynth.period > 0 {
-					tempSynth.k = append(tempSynth.k, float32(lookupK[4][getBits(&bitIndex, 4, word)]))
-					tempSynth.k = append(tempSynth.k, float32(lookupK[5][getBits(&bitIndex, 4, word)]))
-					tempSynth.k = append(tempSynth.k, float32(lookupK[6][getBits(&bitIndex, 4, word)]))
-					tempSynth.k = append(tempSynth.k, float32(lookupK[7][getBits(&bitIndex, 3, word)]))
-					tempSynth.k = append(tempSynth.k, float32(lookupK[8][getBits(&bitIndex, 3, word)]))
-					tempSynth.k = append(tempSynth.k, float32(lookupK[9][getBits(&bitIndex, 3, word)]))
+				if tempSynth.Period > 0 {
+					tempSynth.K = append(tempSynth.K, float32(lookupK[4][getBits(&bitIndex, 4, word)]))
+					tempSynth.K = append(tempSynth.K, float32(lookupK[5][getBits(&bitIndex, 4, word)]))
+					tempSynth.K = append(tempSynth.K, float32(lookupK[6][getBits(&bitIndex, 4, word)]))
+					tempSynth.K = append(tempSynth.K, float32(lookupK[7][getBits(&bitIndex, 3, word)]))
+					tempSynth.K = append(tempSynth.K, float32(lookupK[8][getBits(&bitIndex, 3, word)]))
+					tempSynth.K = append(tempSynth.K, float32(lookupK[9][getBits(&bitIndex, 3, word)]))
 				} else {
 					// If unvoiced, make other coefficients zero
 					for i := 0; i < Coefficients-4; i++ {
-						tempSynth.k = append(tempSynth.k, 0)
+						tempSynth.K = append(tempSynth.K, 0)
 					}
 				}
 			} else {
 				// Repeat frame. Copy the constants of the previous frame
-				constants := len(synth[len(synth)-1].k)
-				tempSynth.k = make([]float32, constants)
-				copy(tempSynth.k, synth[len(synth)-1].k)
+				constants := len(synth[len(synth)-1].K)
+				tempSynth.K = make([]float32, constants)
+				copy(tempSynth.K, synth[len(synth)-1].K)
 			}
 		}
 		synth = append(synth, tempSynth)
 	}
+
+	// Dump JSON format output to stdout for the set of LPC frames
+	b, err := json.Marshal(synth)
+	if err != nil {
+		fmt.Println("error:", err)
+	} else {
+
+		os.Stdout.Write(b)
+		fmt.Println("")
+	}
+
 	return synth
 }
 
@@ -890,6 +902,7 @@ func getBits(bitIndex *uint, size int, byteData []uint8) uint8 {
 }
 
 func play(synth []lpcFrame, word string, fp *os.File) {
+
 	var periodCounter float32
 	periodCounter = 0
 	x := make([]float32, Coefficients+1)
@@ -902,9 +915,9 @@ func play(synth []lpcFrame, word string, fp *os.File) {
 	for frameNumber := 0; frameNumber < len(synth); frameNumber++ {
 
 		// Some debugging for helping with decoding phonemes
-		if synth[frameNumber].energy <= 0 {
+		if synth[frameNumber].Energy <= 0 {
 			fmt.Print("x") // Silent. Debug
-		} else if synth[frameNumber].period <= 0 {
+		} else if synth[frameNumber].Period <= 0 {
 			fmt.Print("|") // Non-voiced. Debug
 		} else {
 			fmt.Print("-") // Voiced. Debug
@@ -915,10 +928,10 @@ func play(synth []lpcFrame, word string, fp *os.File) {
 			// interpolated := synth[frameNumber] // for debugging only
 
 			// arpeggioTest := []int{0, 3, 5, 7, 12}                                              // Test 2 (arpeggio)
-			// interpolated.period = noteToPeriod((12 * 1) + float32(arpeggioTest[len(synth)%5])) // Test 2
+			// interpolated.Period = noteToPeriod((12 * 1) + float32(arpeggioTest[len(synth)%5])) // Test 2
 
 			// Generate source signal
-			if synth[frameNumber].period > 0 {
+			if synth[frameNumber].Period > 0 {
 				// Voiced source
 				u[10] = playChirp(interpolated, &periodCounter)
 			} else {
@@ -938,7 +951,7 @@ func play(synth []lpcFrame, word string, fp *os.File) {
 func makeInterpolatedFrame(frameNumber int, synth []lpcFrame, sampleInFrame int, samplesPerFrame int) lpcFrame {
 	ratio := 2 * float32(sampleInFrame) / float32(samplesPerFrame)
 	var newFrame lpcFrame
-	newFrame.k = make([]float32, Coefficients+1)
+	newFrame.K = make([]float32, Coefficients+1)
 	var otherIndex int
 	var currRatio float32
 	var otherRatio float32
@@ -960,18 +973,18 @@ func makeInterpolatedFrame(frameNumber int, synth []lpcFrame, sampleInFrame int,
 		otherIndex--
 	}
 	// Don't interpolate between unvoiced frames
-	if synth[otherIndex].period == 0 {
+	if synth[otherIndex].Period == 0 {
 		otherIndex = frameNumber
 	}
-	if synth[frameNumber].period == 0 {
+	if synth[frameNumber].Period == 0 {
 		otherIndex = frameNumber
 	}
 
-	newFrame.energy = currRatio*synth[frameNumber].energy + otherRatio*synth[otherIndex].energy
-	newFrame.period = currRatio*synth[frameNumber].period + otherRatio*synth[otherIndex].period
+	newFrame.Energy = currRatio*synth[frameNumber].Energy + otherRatio*synth[otherIndex].Energy
+	newFrame.Period = currRatio*synth[frameNumber].Period + otherRatio*synth[otherIndex].Period
 	for coefficient := 0; coefficient < 10; coefficient++ {
-		newFrame.k[coefficient] = currRatio*synth[frameNumber].k[coefficient] + otherRatio*synth[otherIndex].k[coefficient]
-		// newFrame.k[coefficient] = synth[frameNumber].k[coefficient] // For debugging without FIR coefficient interpolation
+		newFrame.K[coefficient] = currRatio*synth[frameNumber].K[coefficient] + otherRatio*synth[otherIndex].K[coefficient]
+		// newFrame.K[coefficient] = synth[frameNumber].K[coefficient] // For debugging without FIR coefficient interpolation
 	}
 	// fmt.Println(currRatio, frameNumber, otherRatio, otherIndex)
 	return newFrame
@@ -996,15 +1009,15 @@ func playChirp(synth lpcFrame, periodCounter *float32) float32 {
 	// For example, a value of "41" will give a looping waveform, 42 samples in length.
 
 	// Reset the the chirp waveform if the periodCounter is equal to, or exceeds the period.
-	if *periodCounter < synth.period {
+	if *periodCounter < synth.Period {
 		*periodCounter++
 	} else {
-		*periodCounter -= synth.period
+		*periodCounter -= synth.Period
 	}
 
 	// If periodCounter is larger than the number of samples in the chirp waveform table, pad with zeroes.
 	if *periodCounter < ChirpSize {
-		return ((chirp[int(*periodCounter)]) * synth.energy) / 256
+		return ((chirp[int(*periodCounter)]) * synth.Energy) / 256
 	} else {
 		return 0
 	}
@@ -1024,9 +1037,9 @@ func playNoise(synth lpcFrame, lfsr *uint16) float32 {
 		*lfsr ^= 0xB800
 	}
 	if *lfsr&1 > 0 {
-		output = synth.energy
+		output = synth.Energy
 	} else {
-		output = -synth.energy
+		output = -synth.Energy
 	}
 	output *= float32(*lfsr & 1)
 	return output
@@ -1034,16 +1047,16 @@ func playNoise(synth lpcFrame, lfsr *uint16) float32 {
 
 func filter(synth lpcFrame, u []float32, x []float32) {
 	// Lattice filter forward path
-	u[9] = u[10] - ((synth.k[9] * x[9]) / 128)
-	u[8] = u[9] - ((synth.k[8] * x[8]) / 128)
-	u[7] = u[8] - ((synth.k[7] * x[7]) / 128)
-	u[6] = u[7] - ((synth.k[6] * x[6]) / 128)
-	u[5] = u[6] - ((synth.k[5] * x[5]) / 128)
-	u[4] = u[5] - ((synth.k[4] * x[4]) / 128)
-	u[3] = u[4] - ((synth.k[3] * x[3]) / 128)
-	u[2] = u[3] - ((synth.k[2] * x[2]) / 128)
-	u[1] = u[2] - ((synth.k[1] * x[1]) / 32768)
-	u[0] = u[1] - ((synth.k[0] * x[0]) / 32768)
+	u[9] = u[10] - ((synth.K[9] * x[9]) / 128)
+	u[8] = u[9] - ((synth.K[8] * x[8]) / 128)
+	u[7] = u[8] - ((synth.K[7] * x[7]) / 128)
+	u[6] = u[7] - ((synth.K[6] * x[6]) / 128)
+	u[5] = u[6] - ((synth.K[5] * x[5]) / 128)
+	u[4] = u[5] - ((synth.K[4] * x[4]) / 128)
+	u[3] = u[4] - ((synth.K[3] * x[3]) / 128)
+	u[2] = u[3] - ((synth.K[2] * x[2]) / 128)
+	u[1] = u[2] - ((synth.K[1] * x[1]) / 32768)
+	u[0] = u[1] - ((synth.K[0] * x[0]) / 32768)
 
 	// Output clamp
 	if u[0] > 32767 {
@@ -1054,15 +1067,15 @@ func filter(synth lpcFrame, u []float32, x []float32) {
 	}
 
 	// Lattice filter reverse path
-	x[9] = x[8] + ((synth.k[8] * u[8]) / 128)
-	x[8] = x[7] + ((synth.k[7] * u[7]) / 128)
-	x[7] = x[6] + ((synth.k[6] * u[6]) / 128)
-	x[6] = x[5] + ((synth.k[5] * u[5]) / 128)
-	x[5] = x[4] + ((synth.k[4] * u[4]) / 128)
-	x[4] = x[3] + ((synth.k[3] * u[3]) / 128)
-	x[3] = x[2] + ((synth.k[2] * u[2]) / 128)
-	x[2] = x[1] + ((synth.k[1] * u[1]) / 32768)
-	x[1] = x[0] + ((synth.k[0] * u[0]) / 32768)
+	x[9] = x[8] + ((synth.K[8] * u[8]) / 128)
+	x[8] = x[7] + ((synth.K[7] * u[7]) / 128)
+	x[7] = x[6] + ((synth.K[6] * u[6]) / 128)
+	x[6] = x[5] + ((synth.K[5] * u[5]) / 128)
+	x[5] = x[4] + ((synth.K[4] * u[4]) / 128)
+	x[4] = x[3] + ((synth.K[3] * u[3]) / 128)
+	x[3] = x[2] + ((synth.K[2] * u[2]) / 128)
+	x[2] = x[1] + ((synth.K[1] * u[1]) / 32768)
+	x[1] = x[0] + ((synth.K[0] * u[0]) / 32768)
 
 	x[0] = u[0]
 }
@@ -1073,14 +1086,13 @@ func filter(synth lpcFrame, u []float32, x []float32) {
 // Each phone is a standard length, decided by tempo (except non-voiced), whose length can be manipulated individually or in groups with p{n} or (p p){n}.
 // The pitch can also be manipulated similarly, individually or in groups with p{n, t} or (p p){n, t}. The pitch can either be specified as a tone number (0,1,2,3, etc.) or as a note (A-0, A # 0, B-0, etc)
 
-
 // For extraction of data, words in list are converted to ARPABET format phones
 
 // Phones for voiceless consonants, which can be used in analysis:
 // B CH D DH F G HH JH K P S SH T TH V Z ZH
 
 // Phones for voiced, which can be used in analysis:
-// AA AE AH AO AW AY EH ER EY IH IY L M N NG OW OY R UH UW W Y 
+// AA AE AH AO AW AY EH ER EY IH IY L M N NG OW OY R UH UW W Y
 
 // Phoneme Example Translation
 // ------- ------- -----------
