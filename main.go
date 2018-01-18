@@ -7,6 +7,7 @@ import (
 	"fmt"
 	"math"
 	"os"
+	"strings"
 )
 
 type lpcFrame struct {
@@ -862,16 +863,6 @@ func loadWordFrames(word []uint8) []lpcFrame {
 		synth = append(synth, tempSynth)
 	}
 
-	// Dump JSON format output to stdout for the set of LPC frames
-	b, err := json.Marshal(synth)
-	if err != nil {
-		fmt.Println("error:", err)
-	} else {
-
-		os.Stdout.Write(b)
-		fmt.Println("")
-	}
-
 	return synth
 }
 
@@ -902,6 +893,17 @@ func getBits(bitIndex *uint, size int, byteData []uint8) uint8 {
 }
 
 func play(synth []lpcFrame, word string, fp *os.File) {
+
+	// Dump JSON format output to stdout for the set of LPC frames
+	f, _ := os.Create(strings.ToLower(word) + ".json")
+	defer f.Close()
+
+	b, err := json.Marshal(synth)
+	if err != nil {
+		fmt.Println("error:", err)
+	} else {
+		f.Write(b)
+	}
 
 	var periodCounter float32
 	periodCounter = 0
