@@ -1,4 +1,4 @@
-looking for B
+looking for B (BASE |-------|||)
   ABORT found B first/middle
   ABOVE found B first/middle
   BANK found B first
@@ -13,7 +13,7 @@ looking for B
   BROKEN found B first
   BY found B first
   NOVEMBER found B last/middle
-looking for CH
+looking for CH (CHARLIE |||--------------)
   APPROACH found CH last
   CHARLIE found CH first
   CHECK found CH first
@@ -24,7 +24,7 @@ looking for CH
   RICH found CH last
   TEMPERATURE found CH last/middle
   WATCH found CH last
-looking for D
+looking for D (D  ||-------)
   ACCELERATED found D last
   AIRSPEED found D last
   ALTITUDE found D last
@@ -70,12 +70,12 @@ looking for D
   TORNADO found D last/middle
   UNLIMITED found D last
   WIND found D last
-looking for DH
+looking for DH (THE ||-----)
   OTHER found DH first/middle
   OTHER found DH last/middle
   THE found DH first
   WEATHER found DH last/middle
-looking for F
+looking for F (AFFIRMATIVE  ---||||||-----------|||----------)
   AFFIRMATIVE found F first/middle
   ALPHA found F last/middle
   FAILURE found F first
@@ -100,7 +100,7 @@ looking for F
   IDENTIFY found F last/middle
   OFF found F last
   VERIFY found F last/middle
-looking for G
+looking for G (GALLEY |-------------)
   FOG found G last
   GALLEY found G first
   GAS found G first
@@ -116,7 +116,7 @@ looking for G
   IGNITION found G first/middle
   LEG found G last
   TANGO found G last/middle
-looking for HH
+looking for HH (HAIL ||-----------------)
   HAIL found HH first
   HAVE found HH first
   HAZE found HH first
@@ -128,13 +128,13 @@ looking for HH
   HOLD found HH first
   HOTEL found HH first
   HUNDRED found HH first
-looking for JH
+looking for JH (JULIET  -||------------------xxx|||||)
   ACKNOWLEDGE found JH last
   DANGER found JH last/middle
   JULIET found JH first
   ROGER found JH last/middle
   UNDERCARRIAGE found JH last
-looking for K
+looking for K (BANK ---------------xx||||)
   ACKNOWLEDGE found K first/middle
   BANK found K last
   BARKER found K last/middle
@@ -168,7 +168,7 @@ looking for K
   SMOKE found K last
   TRAFFIC found K last
   WAKE found K last
-looking for P
+looking for P (PAPA |------xx|------)
   APPROACH found P first/middle
   APPROACHES found P first/middle
   OPEN found P first/middle
@@ -188,7 +188,7 @@ looking for P
   PUMPS found P first
   STOP found P last
   UP found P last
-looking for S
+looking for S (BASE |-------|||)
   ANSWER found S last/middle
   BASE found S last
   CEILING found S first
@@ -233,11 +233,11 @@ looking for S
   SOUTHEAST found S first
   SOUTHWEST found S first
   USE found S last
-looking for SH
+looking for SH (SHORT |||||||-------xxx||-)
   PRESSURE found SH last/middle
   SHORT found SH first
   SHOWERS found SH first
-looking for T
+looking for T (AIRPORT  -------xx|||-------xxx||)
   ABORT found T last
   AIRPORT found T last
   ALERT found T last
@@ -303,7 +303,7 @@ looking for T
   TWO found T first
   VISIBILITY found T last/middle
   WHITE found T last
-looking for TH
+looking for TH (NORTH ---------------|||||)
   NORTH found TH last
   PATH found TH last
   SOUTH found TH last
@@ -314,7 +314,7 @@ looking for TH
   THOUSAND found TH first
   THREE found TH first
   THUNDERSTORM found TH first
-looking for V
+looking for V (HAVE ||-----------|||)
   ABOVE found V last
   AFFIRMATIVE found V last
   BRAVO found V last/middle
@@ -334,7 +334,7 @@ looking for V
   VERIFY found V first
   VICTOR found V first
   VISIBILITY found V first
-looking for Z
+looking for Z (ADVISE --------------------|||)
   ADVISE found Z last
   APPROACHES found Z last
   AS found Z last
@@ -357,15 +357,15 @@ looking for Z
   ZERO found Z first
   ZONE found Z first
   ZULU found Z first
-looking for ZH
-looking for AA
+looking for ZH (MEASURED ---------||-----------)
+looking for AA (CAUTION |||-----||||----------)
   CAUTION found AA first/middle
   FOG found AA first/middle
   FOG found AA last/middle
   FOXTROT found AA first/middle
   PAPA found AA first/middle
   STOP found AA last/middle
-looking for AE
+looking for AE (ACCELERATED -----xx|||||-------------------)
   ACCELERATED found AE first
   ACKNOWLEDGE found AE first
   ACTION found AE first
@@ -381,7 +381,7 @@ looking for AE
   PATH found AE last/middle
   TAXI found AE first/middle
   VACUUM found AE first/middle
-looking for AH
+looking for AH (AFFIRMATIVE ---||||||-----------|||----------)
   ABORT found AH first
   ABOVE found AH first
   ABOVE found AH last/middle
@@ -404,11 +404,11 @@ looking for AH
   TOUCHDOWN found AH first/middle
   UNLIMITED found AH last/middle
   UP found AH first
-looking for AO
+looking for AO (OFF ----------|||||)
   AUTOPILOT found AO first
   OFF found AO first
   OSCAR found AO first
-looking for AW
+looking for AW (OUT ----------xxx||)
   OUT found AW first
   OUTER found AW first
   SOUTH found AW first/middle
@@ -431,7 +431,7 @@ looking for AY
   SIDE found AY first/middle
   SIDE found AY last/middle
   VERIFY found AY last
-looking for EH
+looking for EH (ECHO  -----xx||-----------)
   CHECK found EH first/middle
   CHECK found EH last/middle
   ECHO found EH first
@@ -445,7 +445,7 @@ looking for EH
   SEVENTEEN found EH first/middle
   SEVENTY found EH first/middle
   VECTORS found EH first/middle
-looking for ER
+looking for ER (ANSWER  ----------||||------)
   ALTIMETER found ER last
   ANSWER found ER last
   BARKER found ER last
@@ -472,7 +472,7 @@ looking for ER
   VECTORS found ER last/middle
   VICTOR found ER last
   WEATHER found ER last
-looking for EY
+looking for EY (BASE  |-------|||)
   BASE found EY first/middle
   BASE found EY last/middle
   EIGHT found EY first
@@ -481,7 +481,7 @@ looking for EY
   HAZE found EY first/middle
   HAZE found EY last/middle
   MAYDAY found EY last
-looking for IH
+looking for IH (EXPECT  ---||||||-x|-------xxxx||-)
   ACCELERATED found IH last/middle
   AFFIRMATIVE found IH last/middle
   APPROACHES found IH last/middle
@@ -509,7 +509,7 @@ looking for IH
   TRAFFIC found IH last/middle
   VICTOR found IH first/middle
   VISIBILITY found IH first/middle
-looking for IY
+looking for IY (D ||-------)
   AIRSPEED found IY last/middle
   D found IY last
   EAST found IY first
@@ -533,11 +533,11 @@ looking for IY
   TWENTY found IY last
   VISIBILITY found IY last
   WHISKEY found IY last
-looking for L
-looking for M
-looking for N
-looking for NG
-looking for OW
+looking for L (CALL K AO L ????)
+looking for M (MEAN M IY N ????)
+looking for N (ZONE --|||----------------- ????)
+looking for NG (LONG  --------------- ????)
+looking for OW (ECHO  -----xx||-----------)
   BRAVO found OW last
   ECHO found OW last
   HOTEL found OW first/middle
@@ -547,13 +547,13 @@ looking for OW
   TANGO found OW last
   TORNADO found OW last
   WINDOWS found OW last/middle
-looking for OY
-looking for R
-looking for UH
-looking for UW
+looking for OY (OIL ------------- ????)
+looking for R (FOR  |||-------- ????)
+looking for UH (FULL  |||||----------- ????)
+looking for UW (BOOST |-------|||||||-xx||)
   ALTITUDE found UW last/middle
   BOOST found UW first/middle
   TO found UW last
   TWO found UW last
-looking for W
-looking for Y
+looking for W (WAY  ----------- ????)
+looking for Y (YOU  --------- ????)
