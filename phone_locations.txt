@@ -1,559 +1,559 @@
 looking for B
-  found B first/middle in ABORT!
-  found B first/middle in ABOVE!
-  found B first in BANK!
-  found B first in BARKER!
-  found B first in BASE!
-  found B first in BELOW!
-  found B first in BLOWING!
-  found B first in BOOST!
-  found B first in BRAKE!
-  found B first in BRAVO!
-  found B first in BREAKING!
-  found B first in BROKEN!
-  found B first in BY!
-  found B last/middle in NOVEMBER!
+  ABORT found B first/middle
+  ABOVE found B first/middle
+  BANK found B first
+  BARKER found B first
+  BASE found B first
+  BELOW found B first
+  BLOWING found B first
+  BOOST found B first
+  BRAKE found B first
+  BRAVO found B first
+  BREAKING found B first
+  BROKEN found B first
+  BY found B first
+  NOVEMBER found B last/middle
 looking for CH
-  found CH last in APPROACH!
-  found CH first in CHARLIE!
-  found CH first in CHECK!
-  found CH last/middle in DEPARTURE!
-  found CH last in GREENWICH!
-  found CH last in LAUNCH!
-  found CH last in MUCH!
-  found CH last in RICH!
-  found CH last/middle in TEMPERATURE!
-  found CH last in WATCH!
+  APPROACH found CH last
+  CHARLIE found CH first
+  CHECK found CH first
+  DEPARTURE found CH last/middle
+  GREENWICH found CH last
+  LAUNCH found CH last
+  MUCH found CH last
+  RICH found CH last
+  TEMPERATURE found CH last/middle
+  WATCH found CH last
 looking for D
-  found D last in ACCELERATED!
-  found D last in AIRSPEED!
-  found D last in ALTITUDE!
-  found D last in AND!
-  found D last/middle in CYLINDER!
-  found D first in D!
-  found D first in DANGER!
-  found D first in DECREASE!
-  found D first in DECREASING!
-  found D first in DEGREE!
-  found D first in DEGREES!
-  found D first in DELTA!
-  found D first in DEPARTURE!
-  found D first in DIVIDED!
-  found D last in DIVIDED!
-  found D first in DOORS!
-  found D first in DOWN!
-  found D first in DOWNWIND!
-  found D last in DOWNWIND!
-  found D first in DRIZZLE!
-  found D last in ESTIMATED!
-  found D last in FILED!
-  found D last in GLIDE!
-  found D last in GROUND!
-  found D last in HOLD!
-  found D last in HUNDRED!
-  found D first/middle in IDENTIFY!
-  found D first/middle in IDLE!
-  found D last in INBOUND!
-  found D last in INDICATED!
-  found D last in LAND!
-  found D last/middle in MAYDAY!
-  found D last in MEASURED!
-  found D last in OBSCURED!
-  found D last/middle in READY!
-  found D last in RED!
-  found D last in SAND!
-  found D last in SCATTERED!
-  found D last in SIDE!
-  found D last in SPEED!
-  found D last/middle in THIRTY!
-  found D last in THOUSAND!
-  found D last/middle in TORNADO!
-  found D last in UNLIMITED!
-  found D last in WIND!
+  ACCELERATED found D last
+  AIRSPEED found D last
+  ALTITUDE found D last
+  AND found D last
+  CYLINDER found D last/middle
+  D found D first
+  DANGER found D first
+  DECREASE found D first
+  DECREASING found D first
+  DEGREE found D first
+  DEGREES found D first
+  DELTA found D first
+  DEPARTURE found D first
+  DIVIDED found D first
+  DIVIDED found D last
+  DOORS found D first
+  DOWN found D first
+  DOWNWIND found D first
+  DOWNWIND found D last
+  DRIZZLE found D first
+  ESTIMATED found D last
+  FILED found D last
+  GLIDE found D last
+  GROUND found D last
+  HOLD found D last
+  HUNDRED found D last
+  IDENTIFY found D first/middle
+  IDLE found D first/middle
+  INBOUND found D last
+  INDICATED found D last
+  LAND found D last
+  MAYDAY found D last/middle
+  MEASURED found D last
+  OBSCURED found D last
+  READY found D last/middle
+  RED found D last
+  SAND found D last
+  SCATTERED found D last
+  SIDE found D last
+  SPEED found D last
+  THIRTY found D last/middle
+  THOUSAND found D last
+  TORNADO found D last/middle
+  UNLIMITED found D last
+  WIND found D last
 looking for DH
-  found DH first/middle in OTHER!
-  found DH last/middle in OTHER!
-  found DH first in THE!
-  found DH last/middle in WEATHER!
+  OTHER found DH first/middle
+  OTHER found DH last/middle
+  THE found DH first
+  WEATHER found DH last/middle
 looking for F
-  found F first/middle in AFFIRMATIVE!
-  found F last/middle in ALPHA!
-  found F first in FAILURE!
-  found F first in FIFTEEN!
-  found F first in FIFTY!
-  found F first in FILED!
-  found F first in FINAL!
-  found F first in FIVE!
-  found F first in FLAPS!
-  found F first in FLIGHT!
-  found F first in FOG!
-  found F first in FOR!
-  found F first in FOUR!
-  found F first in FOURTEEN!
-  found F first in FOXTROT!
-  found F first in FREEDOM!
-  found F first in FREEZING!
-  found F first in FRONT!
-  found F first in FUEL!
-  found F first in FULL!
-  found F last in GOLF!
-  found F last/middle in IDENTIFY!
-  found F last in OFF!
-  found F last/middle in VERIFY!
+  AFFIRMATIVE found F first/middle
+  ALPHA found F last/middle
+  FAILURE found F first
+  FIFTEEN found F first
+  FIFTY found F first
+  FILED found F first
+  FINAL found F first
+  FIVE found F first
+  FLAPS found F first
+  FLIGHT found F first
+  FOG found F first
+  FOR found F first
+  FOUR found F first
+  FOURTEEN found F first
+  FOXTROT found F first
+  FREEDOM found F first
+  FREEZING found F first
+  FRONT found F first
+  FUEL found F first
+  FULL found F first
+  GOLF found F last
+  IDENTIFY found F last/middle
+  OFF found F last
+  VERIFY found F last/middle
 looking for G
-  found G last in FOG!
-  found G first in GALLEY!
-  found G first in GAS!
-  found G first in GEAR!
-  found G first in GLIDE!
-  found G first in GOLF!
-  found G first in GREAT!
-  found G first in GREEN!
-  found G first in GREENWICH!
-  found G first in GROUND!
-  found G first in GUST!
-  found G first/middle in IGNITE!
-  found G first/middle in IGNITION!
-  found G last in LEG!
-  found G last/middle in TANGO!
+  FOG found G last
+  GALLEY found G first
+  GAS found G first
+  GEAR found G first
+  GLIDE found G first
+  GOLF found G first
+  GREAT found G first
+  GREEN found G first
+  GREENWICH found G first
+  GROUND found G first
+  GUST found G first
+  IGNITE found G first/middle
+  IGNITION found G first/middle
+  LEG found G last
+  TANGO found G last/middle
 looking for HH
-  found HH first in HAIL!
-  found HH first in HAVE!
-  found HH first in HAZE!
-  found HH first in HEADING!
-  found HH first in HEAT!
-  found HH first in HEAVY!
-  found HH first in HERTZ!
-  found HH first in HIGH!
-  found HH first in HOLD!
-  found HH first in HOTEL!
-  found HH first in HUNDRED!
+  HAIL found HH first
+  HAVE found HH first
+  HAZE found HH first
+  HEADING found HH first
+  HEAT found HH first
+  HEAVY found HH first
+  HERTZ found HH first
+  HIGH found HH first
+  HOLD found HH first
+  HOTEL found HH first
+  HUNDRED found HH first
 looking for JH
-  found JH last in ACKNOWLEDGE!
-  found JH last/middle in DANGER!
-  found JH first in JULIET!
-  found JH last/middle in ROGER!
-  found JH last in UNDERCARRIAGE!
+  ACKNOWLEDGE found JH last
+  DANGER found JH last/middle
+  JULIET found JH first
+  ROGER found JH last/middle
+  UNDERCARRIAGE found JH last
 looking for K
-  found K first/middle in ACKNOWLEDGE!
-  found K last in BANK!
-  found K last/middle in BARKER!
-  found K last in BRAKE!
-  found K first in CABIN!
-  found K first in CALL!
-  found K first in CALM!
-  found K first in CANCEL!
-  found K first in CAUTION!
-  found K last in CHECK!
-  found K first in CLEAR!
-  found K first in CLEARANCE!
-  found K first in CLIMB!
-  found K first in CLOSE!
-  found K first in CONTACT!
-  found K first in CONTROL!
-  found K first in CONVERGING!
-  found K first in COURSE!
-  found K first in COWL!
-  found K first in CRYSTALS!
-  found K first in CURRENT!
-  found K first/middle in ECHO!
-  found K last/middle in ECHO!
-  found K first/middle in EQUALS!
-  found K first in KEY!
-  found K first in KILO!
-  found K last in MIKE!
-  found K first in QUEBEC!
-  found K last in QUEBEC!
-  found K last in REMARK!
-  found K last in SMOKE!
-  found K last in TRAFFIC!
-  found K last in WAKE!
+  ACKNOWLEDGE found K first/middle
+  BANK found K last
+  BARKER found K last/middle
+  BRAKE found K last
+  CABIN found K first
+  CALL found K first
+  CALM found K first
+  CANCEL found K first
+  CAUTION found K first
+  CHECK found K last
+  CLEAR found K first
+  CLEARANCE found K first
+  CLIMB found K first
+  CLOSE found K first
+  CONTACT found K first
+  CONTROL found K first
+  CONVERGING found K first
+  COURSE found K first
+  COWL found K first
+  CRYSTALS found K first
+  CURRENT found K first
+  ECHO found K first/middle
+  ECHO found K last/middle
+  EQUALS found K first/middle
+  KEY found K first
+  KILO found K first
+  MIKE found K last
+  QUEBEC found K first
+  QUEBEC found K last
+  REMARK found K last
+  SMOKE found K last
+  TRAFFIC found K last
+  WAKE found K last
 looking for P
-  found P first/middle in APPROACH!
-  found P first/middle in APPROACHES!
-  found P first/middle in OPEN!
-  found P first in PAPA!
-  found P last/middle in PAPA!
-  found P first in PARTIALLY!
-  found P first in PATH!
-  found P first in PELLETS!
-  found P first in PER!
-  found P first in PERCENT!
-  found P first in PLAN!
-  found P first in PLEASE!
-  found P first in PLUS!
-  found P first in POINT!
-  found P first in POWER!
-  found P first in PRESSURE!
-  found P first in PUMPS!
-  found P last in STOP!
-  found P last in UP!
+  APPROACH found P first/middle
+  APPROACHES found P first/middle
+  OPEN found P first/middle
+  PAPA found P first
+  PAPA found P last/middle
+  PARTIALLY found P first
+  PATH found P first
+  PELLETS found P first
+  PER found P first
+  PERCENT found P first
+  PLAN found P first
+  PLEASE found P first
+  PLUS found P first
+  POINT found P first
+  POWER found P first
+  PRESSURE found P first
+  PUMPS found P first
+  STOP found P last
+  UP found P last
 looking for S
-  found S last/middle in ANSWER!
-  found S last in BASE!
-  found S first in CEILING!
-  found S first in CENTRE!
-  found S last in CLEARANCE!
-  found S last in CLOSE!
-  found S last in COURSE!
-  found S first in CYCLE!
-  found S first in CYLINDER!
-  found S last in DECREASE!
-  found S last/middle in EMERGENCY!
-  found S last in GAS!
-  found S last in ICE!
-  found S first/middle in ICING!
-  found S last in INCREASE!
-  found S last in MINUS!
-  found S last in PLUS!
-  found S last in RELEASE!
-  found S first in SAND!
-  found S first in SECURITY!
-  found S first in SELECT!
-  found S first in SEQUENCE!
-  found S last in SEQUENCE!
-  found S first in SERVICE!
-  found S last in SERVICE!
-  found S first in SET!
-  found S first in SEVEN!
-  found S first in SEVENTEEN!
-  found S first in SEVENTY!
-  found S first in SEVERE!
-  found S first in SIDE!
-  found S first in SIERRA!
-  found S first in SIGNET!
-  found S first in SIX!
-  found S first in SIXTEEN!
-  found S first in SIXTY!
-  found S first in SLEET!
-  found S first in SLOW!
-  found S first in SMOKE!
-  found S first in SNOW!
-  found S first in SOUTH!
-  found S first in SOUTHEAST!
-  found S first in SOUTHWEST!
-  found S last in USE!
+  ANSWER found S last/middle
+  BASE found S last
+  CEILING found S first
+  CENTRE found S first
+  CLEARANCE found S last
+  CLOSE found S last
+  COURSE found S last
+  CYCLE found S first
+  CYLINDER found S first
+  DECREASE found S last
+  EMERGENCY found S last/middle
+  GAS found S last
+  ICE found S last
+  ICING found S first/middle
+  INCREASE found S last
+  MINUS found S last
+  PLUS found S last
+  RELEASE found S last
+  SAND found S first
+  SECURITY found S first
+  SELECT found S first
+  SEQUENCE found S first
+  SEQUENCE found S last
+  SERVICE found S first
+  SERVICE found S last
+  SET found S first
+  SEVEN found S first
+  SEVENTEEN found S first
+  SEVENTY found S first
+  SEVERE found S first
+  SIDE found S first
+  SIERRA found S first
+  SIGNET found S first
+  SIX found S first
+  SIXTEEN found S first
+  SIXTY found S first
+  SLEET found S first
+  SLOW found S first
+  SMOKE found S first
+  SNOW found S first
+  SOUTH found S first
+  SOUTHEAST found S first
+  SOUTHWEST found S first
+  USE found S last
 looking for SH
-  found SH last/middle in PRESSURE!
-  found SH first in SHORT!
-  found SH first in SHOWERS!
+  PRESSURE found SH last/middle
+  SHORT found SH first
+  SHOWERS found SH first
 looking for T
-  found T last in ABORT!
-  found T last in AIRPORT!
-  found T last in ALERT!
-  found T last in ALTERNATE!
-  found T last/middle in ALTIMETER!
-  found T last in AT!
-  found T last in AUTOPILOT!
-  found T first/middle in AUTOPILOT!
-  found T last/middle in CENTRE!
-  found T last in CURRENT!
-  found T last/middle in DELTA!
-  found T last in EIGHT!
-  found T first/middle in EIGHTEEN!
-  found T first/middle in EIGHTY!
-  found T last/middle in EIGHTY!
-  found T last in EVACUATE!
-  found T last in FLIGHT!
-  found T last in FOXTROT!
-  found T last in FRONT!
-  found T last in GREAT!
-  found T last in HEAT!
-  found T last in IGNITE!
-  found T last in INFLIGHT!
-  found T last in JULIET!
-  found T last in LIGHT!
-  found T last in MIDPOINT!
-  found T last in MODERATE!
-  found T last/middle in NINETY!
-  found T last in OUT!
-  found T first/middle in OUTER!
-  found T last/middle in OUTER!
-  found T last in PERCENT!
-  found T last in POINT!
-  found T last in RIGHT!
-  found T last/middle in SECURITY!
-  found T last in SET!
-  found T last/middle in SEVENTY!
-  found T last in SHORT!
-  found T last in SIGNET!
-  found T last in SLEET!
-  found T last in START!
-  found T first in TANGO!
-  found T first in TARGET!
-  found T last in TARGET!
-  found T first in TAXI!
-  found T first in TELEPHONE!
-  found T first in TEMPERATURE!
-  found T first in TEN!
-  found T first in TERMINAL!
-  found T first in TIME!
-  found T first in TIMES!
-  found T first in TO!
-  found T first in TORNADO!
-  found T first in TOUCHDOWN!
-  found T first in TOWER!
-  found T first in TRAFFIC!
-  found T first in TRIM!
-  found T first in TRUE!
-  found T first in TURN!
-  found T first in TWELVE!
-  found T first in TWENTY!
-  found T last/middle in TWENTY!
-  found T first in TWO!
-  found T last/middle in VISIBILITY!
-  found T last in WHITE!
+  ABORT found T last
+  AIRPORT found T last
+  ALERT found T last
+  ALTERNATE found T last
+  ALTIMETER found T last/middle
+  AT found T last
+  AUTOPILOT found T last
+  AUTOPILOT found T first/middle
+  CENTRE found T last/middle
+  CURRENT found T last
+  DELTA found T last/middle
+  EIGHT found T last
+  EIGHTEEN found T first/middle
+  EIGHTY found T first/middle
+  EIGHTY found T last/middle
+  EVACUATE found T last
+  FLIGHT found T last
+  FOXTROT found T last
+  FRONT found T last
+  GREAT found T last
+  HEAT found T last
+  IGNITE found T last
+  INFLIGHT found T last
+  JULIET found T last
+  LIGHT found T last
+  MIDPOINT found T last
+  MODERATE found T last
+  NINETY found T last/middle
+  OUT found T last
+  OUTER found T first/middle
+  OUTER found T last/middle
+  PERCENT found T last
+  POINT found T last
+  RIGHT found T last
+  SECURITY found T last/middle
+  SET found T last
+  SEVENTY found T last/middle
+  SHORT found T last
+  SIGNET found T last
+  SLEET found T last
+  START found T last
+  TANGO found T first
+  TARGET found T first
+  TARGET found T last
+  TAXI found T first
+  TELEPHONE found T first
+  TEMPERATURE found T first
+  TEN found T first
+  TERMINAL found T first
+  TIME found T first
+  TIMES found T first
+  TO found T first
+  TORNADO found T first
+  TOUCHDOWN found T first
+  TOWER found T first
+  TRAFFIC found T first
+  TRIM found T first
+  TRUE found T first
+  TURN found T first
+  TWELVE found T first
+  TWENTY found T first
+  TWENTY found T last/middle
+  TWO found T first
+  VISIBILITY found T last/middle
+  WHITE found T last
 looking for TH
-  found TH last in NORTH!
-  found TH last in PATH!
-  found TH last in SOUTH!
-  found TH first in THIN!
-  found TH first in THINLY!
-  found TH first in THIRTEEN!
-  found TH first in THIRTY!
-  found TH first in THOUSAND!
-  found TH first in THREE!
-  found TH first in THUNDERSTORM!
+  NORTH found TH last
+  PATH found TH last
+  SOUTH found TH last
+  THIN found TH first
+  THINLY found TH first
+  THIRTEEN found TH first
+  THIRTY found TH first
+  THOUSAND found TH first
+  THREE found TH first
+  THUNDERSTORM found TH first
 looking for V
-  found V last in ABOVE!
-  found V last in AFFIRMATIVE!
-  found V last/middle in BRAVO!
-  found V first/middle in EVACUATE!
-  found V first/middle in EVACUATION!
-  found V last in FIVE!
-  found V last in HAVE!
-  found V last/middle in HEAVY!
-  found V last in NEGATIVE!
-  found V last in OF!
-  found V first/middle in OVER!
-  found V last/middle in OVER!
-  found V first/middle in OVERCAST!
-  found V last in TWELVE!
-  found V first in VACUUM!
-  found V first in VECTORS!
-  found V first in VERIFY!
-  found V first in VICTOR!
-  found V first in VISIBILITY!
+  ABOVE found V last
+  AFFIRMATIVE found V last
+  BRAVO found V last/middle
+  EVACUATE found V first/middle
+  EVACUATION found V first/middle
+  FIVE found V last
+  HAVE found V last
+  HEAVY found V last/middle
+  NEGATIVE found V last
+  OF found V last
+  OVER found V first/middle
+  OVER found V last/middle
+  OVERCAST found V first/middle
+  TWELVE found V last
+  VACUUM found V first
+  VECTORS found V first
+  VERIFY found V first
+  VICTOR found V first
+  VISIBILITY found V first
 looking for Z
-  found Z last in ADVISE!
-  found Z last in APPROACHES!
-  found Z last in AS!
-  found Z last in CRYSTALS!
-  found Z last in DEGREES!
-  found Z last in DOORS!
-  found Z last in EQUALS!
-  found Z last in HAZE!
-  found Z last in HOURS!
-  found Z last in IS!
-  found Z last in MILES!
-  found Z last in PLEASE!
-  found Z last in RADIOS!
-  found Z last in RAISE!
-  found Z last in SHOWERS!
-  found Z last in SPOILERS!
-  found Z last in TIMES!
-  found Z last in VECTORS!
-  found Z last in WINDOWS!
-  found Z first in ZERO!
-  found Z first in ZONE!
-  found Z first in ZULU!
+  ADVISE found Z last
+  APPROACHES found Z last
+  AS found Z last
+  CRYSTALS found Z last
+  DEGREES found Z last
+  DOORS found Z last
+  EQUALS found Z last
+  HAZE found Z last
+  HOURS found Z last
+  IS found Z last
+  MILES found Z last
+  PLEASE found Z last
+  RADIOS found Z last
+  RAISE found Z last
+  SHOWERS found Z last
+  SPOILERS found Z last
+  TIMES found Z last
+  VECTORS found Z last
+  WINDOWS found Z last
+  ZERO found Z first
+  ZONE found Z first
+  ZULU found Z first
 looking for ZH
 looking for AA
-  found AA first/middle in CAUTION!
-  found AA first/middle in FOG!
-  found AA last/middle in FOG!
-  found AA first/middle in FOXTROT!
-  found AA first/middle in PAPA!
-  found AA last/middle in STOP!
+  CAUTION found AA first/middle
+  FOG found AA first/middle
+  FOG found AA last/middle
+  FOXTROT found AA first/middle
+  PAPA found AA first/middle
+  STOP found AA last/middle
 looking for AE
-  found AE first in ACCELERATED!
-  found AE first in ACKNOWLEDGE!
-  found AE first in ACTION!
-  found AE first in ADVISE!
-  found AE first in AS!
-  found AE first in AT!
-  found AE first/middle in CABIN!
-  found AE first/middle in GAS!
-  found AE last/middle in GAS!
-  found AE first/middle in HAVE!
-  found AE last/middle in HAVE!
-  found AE first/middle in PATH!
-  found AE last/middle in PATH!
-  found AE first/middle in TAXI!
-  found AE first/middle in VACUUM!
+  ACCELERATED found AE first
+  ACKNOWLEDGE found AE first
+  ACTION found AE first
+  ADVISE found AE first
+  AS found AE first
+  AT found AE first
+  CABIN found AE first/middle
+  GAS found AE first/middle
+  GAS found AE last/middle
+  HAVE found AE first/middle
+  HAVE found AE last/middle
+  PATH found AE first/middle
+  PATH found AE last/middle
+  TAXI found AE first/middle
+  VACUUM found AE first/middle
 looking for AH
-  found AH first in ABORT!
-  found AH first in ABOVE!
-  found AH last/middle in ABOVE!
-  found AH first in AFFIRMATIVE!
-  found AH last in ALPHA!
-  found AH first in APPROACH!
-  found AH first in APPROACHES!
-  found AH last in DELTA!
-  found AH last/middle in ESTIMATED!
-  found AH first/middle in GUST!
-  found AH last/middle in INDICATED!
-  found AH first in OBSCURED!
-  found AH first in OF!
-  found AH first in OTHER!
-  found AH last in PAPA!
-  found AH last/middle in SERVICE!
-  found AH first/middle in SEVERE!
-  found AH last/middle in TARGET!
-  found AH last in THE!
-  found AH first/middle in TOUCHDOWN!
-  found AH last/middle in UNLIMITED!
-  found AH first in UP!
+  ABORT found AH first
+  ABOVE found AH first
+  ABOVE found AH last/middle
+  AFFIRMATIVE found AH first
+  ALPHA found AH last
+  APPROACH found AH first
+  APPROACHES found AH first
+  DELTA found AH last
+  ESTIMATED found AH last/middle
+  GUST found AH first/middle
+  INDICATED found AH last/middle
+  OBSCURED found AH first
+  OF found AH first
+  OTHER found AH first
+  PAPA found AH last
+  SERVICE found AH last/middle
+  SEVERE found AH first/middle
+  TARGET found AH last/middle
+  THE found AH last
+  TOUCHDOWN found AH first/middle
+  UNLIMITED found AH last/middle
+  UP found AH first
 looking for AO
-  found AO first in AUTOPILOT!
-  found AO first in OFF!
-  found AO first in OSCAR!
+  AUTOPILOT found AO first
+  OFF found AO first
+  OSCAR found AO first
 looking for AW
-  found AW first in OUT!
-  found AW first in OUTER!
-  found AW first/middle in SOUTH!
-  found AW last/middle in SOUTH!
-  found AW first/middle in SOUTHEAST!
-  found AW first/middle in SOUTHWEST!
-  found AW first/middle in THOUSAND!
+  OUT found AW first
+  OUTER found AW first
+  SOUTH found AW first/middle
+  SOUTH found AW last/middle
+  SOUTHEAST found AW first/middle
+  SOUTHWEST found AW first/middle
+  THOUSAND found AW first/middle
 looking for AY
-  found AY last/middle in ADVISE!
-  found AY last in BY!
-  found AY first/middle in CYCLE!
-  found AY first/middle in FIVE!
-  found AY last/middle in FIVE!
-  found AY last in HIGH!
-  found AY first in ICE!
-  found AY first in ICING!
-  found AY first in IDENTIFY!
-  found AY last in IDENTIFY!
-  found AY first in IDLE!
-  found AY first/middle in SIDE!
-  found AY last/middle in SIDE!
-  found AY last in VERIFY!
+  ADVISE found AY last/middle
+  BY found AY last
+  CYCLE found AY first/middle
+  FIVE found AY first/middle
+  FIVE found AY last/middle
+  HIGH found AY last
+  ICE found AY first
+  ICING found AY first
+  IDENTIFY found AY first
+  IDENTIFY found AY last
+  IDLE found AY first
+  SIDE found AY first/middle
+  SIDE found AY last/middle
+  VERIFY found AY last
 looking for EH
-  found EH first/middle in CHECK!
-  found EH last/middle in CHECK!
-  found EH first in ECHO!
-  found EH first in ESTIMATED!
-  found EH first/middle in HEADING!
-  found EH first/middle in HEAVY!
-  found EH last/middle in QUEBEC!
-  found EH first/middle in SET!
-  found EH last/middle in SET!
-  found EH first/middle in SEVEN!
-  found EH first/middle in SEVENTEEN!
-  found EH first/middle in SEVENTY!
-  found EH first/middle in VECTORS!
+  CHECK found EH first/middle
+  CHECK found EH last/middle
+  ECHO found EH first
+  ESTIMATED found EH first
+  HEADING found EH first/middle
+  HEAVY found EH first/middle
+  QUEBEC found EH last/middle
+  SET found EH first/middle
+  SET found EH last/middle
+  SEVEN found EH first/middle
+  SEVENTEEN found EH first/middle
+  SEVENTY found EH first/middle
+  VECTORS found EH first/middle
 looking for ER
-  found ER last in ALTIMETER!
-  found ER last in ANSWER!
-  found ER last in BARKER!
-  found ER last in CENTRE!
-  found ER last in CYLINDER!
-  found ER last in DANGER!
-  found ER last in DEPARTURE!
-  found ER last/middle in MEASURED!
-  found ER last in MIXTURE!
-  found ER last in NOVEMBER!
-  found ER last in OSCAR!
-  found ER last in OTHER!
-  found ER last in OUTER!
-  found ER last in OVER!
-  found ER last in PER!
-  found ER first/middle in PERCENT!
-  found ER last in PRESSURE!
-  found ER last in ROGER!
-  found ER last/middle in SCATTERED!
-  found ER first/middle in SERVICE!
-  found ER last in TEMPERATURE!
-  found ER first/middle in THIRTEEN!
-  found ER first/middle in THIRTY!
-  found ER last/middle in VECTORS!
-  found ER last in VICTOR!
-  found ER last in WEATHER!
+  ALTIMETER found ER last
+  ANSWER found ER last
+  BARKER found ER last
+  CENTRE found ER last
+  CYLINDER found ER last
+  DANGER found ER last
+  DEPARTURE found ER last
+  MEASURED found ER last/middle
+  MIXTURE found ER last
+  NOVEMBER found ER last
+  OSCAR found ER last
+  OTHER found ER last
+  OUTER found ER last
+  OVER found ER last
+  PER found ER last
+  PERCENT found ER first/middle
+  PRESSURE found ER last
+  ROGER found ER last
+  SCATTERED found ER last/middle
+  SERVICE found ER first/middle
+  TEMPERATURE found ER last
+  THIRTEEN found ER first/middle
+  THIRTY found ER first/middle
+  VECTORS found ER last/middle
+  VICTOR found ER last
+  WEATHER found ER last
 looking for EY
-  found EY first/middle in BASE!
-  found EY last/middle in BASE!
-  found EY first in EIGHT!
-  found EY first in EIGHTEEN!
-  found EY first in EIGHTY!
-  found EY first/middle in HAZE!
-  found EY last/middle in HAZE!
-  found EY last in MAYDAY!
+  BASE found EY first/middle
+  BASE found EY last/middle
+  EIGHT found EY first
+  EIGHTEEN found EY first
+  EIGHTY found EY first
+  HAZE found EY first/middle
+  HAZE found EY last/middle
+  MAYDAY found EY last
 looking for IH
-  found IH last/middle in ACCELERATED!
-  found IH last/middle in AFFIRMATIVE!
-  found IH last/middle in APPROACHES!
-  found IH first/middle in DECREASE!
-  found IH first/middle in DECREASING!
-  found IH first/middle in DEGREE!
-  found IH first/middle in DEGREES!
-  found IH first/middle in DEPARTURE!
-  found IH first/middle in DIVIDED!
-  found IH last/middle in DIVIDED!
-  found IH first in EVACUATE!
-  found IH first in EVACUATION!
-  found IH first in EXPECT!
-  found IH first/middle in FIFTEEN!
-  found IH first/middle in FIFTY!
-  found IH first in IGNITE!
-  found IH first in IGNITION!
-  found IH first in IS!
-  found IH last/middle in NEGATIVE!
-  found IH first/middle in SECURITY!
-  found IH first/middle in SIGNET!
-  found IH first/middle in SIX!
-  found IH first/middle in SIXTEEN!
-  found IH first/middle in SIXTY!
-  found IH last/middle in TRAFFIC!
-  found IH first/middle in VICTOR!
-  found IH first/middle in VISIBILITY!
+  ACCELERATED found IH last/middle
+  AFFIRMATIVE found IH last/middle
+  APPROACHES found IH last/middle
+  DECREASE found IH first/middle
+  DECREASING found IH first/middle
+  DEGREE found IH first/middle
+  DEGREES found IH first/middle
+  DEPARTURE found IH first/middle
+  DIVIDED found IH first/middle
+  DIVIDED found IH last/middle
+  EVACUATE found IH first
+  EVACUATION found IH first
+  EXPECT found IH first
+  FIFTEEN found IH first/middle
+  FIFTY found IH first/middle
+  IGNITE found IH first
+  IGNITION found IH first
+  IS found IH first
+  NEGATIVE found IH last/middle
+  SECURITY found IH first/middle
+  SIGNET found IH first/middle
+  SIX found IH first/middle
+  SIXTEEN found IH first/middle
+  SIXTY found IH first/middle
+  TRAFFIC found IH last/middle
+  VICTOR found IH first/middle
+  VISIBILITY found IH first/middle
 looking for IY
-  found IY last/middle in AIRSPEED!
-  found IY last in D!
-  found IY first in EAST!
-  found IY last in EIGHTY!
-  found IY last in EMERGENCY!
-  found IY first in EQUALS!
-  found IY last in FIFTY!
-  found IY first/middle in HEAT!
-  found IY last/middle in HEAT!
-  found IY last in HEAVY!
-  found IY last in KEY!
-  found IY last in NINETY!
-  found IY last in READY!
-  found IY last in SECURITY!
-  found IY first/middle in SEQUENCE!
-  found IY last in SEVENTY!
-  found IY last in SIXTY!
-  found IY last/middle in SPEED!
-  found IY last in TAXI!
-  found IY last in THIRTY!
-  found IY last in TWENTY!
-  found IY last in VISIBILITY!
-  found IY last in WHISKEY!
+  AIRSPEED found IY last/middle
+  D found IY last
+  EAST found IY first
+  EIGHTY found IY last
+  EMERGENCY found IY last
+  EQUALS found IY first
+  FIFTY found IY last
+  HEAT found IY first/middle
+  HEAT found IY last/middle
+  HEAVY found IY last
+  KEY found IY last
+  NINETY found IY last
+  READY found IY last
+  SECURITY found IY last
+  SEQUENCE found IY first/middle
+  SEVENTY found IY last
+  SIXTY found IY last
+  SPEED found IY last/middle
+  TAXI found IY last
+  THIRTY found IY last
+  TWENTY found IY last
+  VISIBILITY found IY last
+  WHISKEY found IY last
 looking for L
 looking for M
 looking for N
 looking for NG
 looking for OW
-  found OW last in BRAVO!
-  found OW last in ECHO!
-  found OW first/middle in HOTEL!
-  found OW first in OPEN!
-  found OW first in OVER!
-  found OW first in OVERCAST!
-  found OW last in TANGO!
-  found OW last in TORNADO!
-  found OW last/middle in WINDOWS!
+  BRAVO found OW last
+  ECHO found OW last
+  HOTEL found OW first/middle
+  OPEN found OW first
+  OVER found OW first
+  OVERCAST found OW first
+  TANGO found OW last
+  TORNADO found OW last
+  WINDOWS found OW last/middle
 looking for OY
 looking for R
 looking for UH
 looking for UW
-  found UW last/middle in ALTITUDE!
-  found UW first/middle in BOOST!
-  found UW last in TO!
-  found UW last in TWO!
+  ALTITUDE found UW last/middle
+  BOOST found UW first/middle
+  TO found UW last
+  TWO found UW last
 looking for W
 looking for Y
