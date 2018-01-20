@@ -855,13 +855,14 @@ func loadWordFrames(word []uint8) []lpcFrame {
 				}
 			} else {
 				// Repeat frame. Copy the constants of the previous frame
-				constants := len(synth[len(synth)-1].K)
+				constants := len(synth[len(synth)-1].K) // Remove the silent "stop frame"
 				tempSynth.K = make([]float32, constants)
 				copy(tempSynth.K, synth[len(synth)-1].K)
 			}
 		}
 		synth = append(synth, tempSynth)
 	}
+	synth = synth[:len(synth)-1]
 
 	return synth
 }
@@ -898,7 +899,7 @@ func play(synth []lpcFrame, word string, fp *os.File) {
 	f, _ := os.Create(strings.ToLower(word) + ".json")
 	defer f.Close()
 
-	b, err := json.Marshal(synth)
+	b, err := json.MarshalIndent(synth, "", "    ")
 	if err != nil {
 		fmt.Println("error:", err)
 	} else {
@@ -986,9 +987,8 @@ func makeInterpolatedFrame(frameNumber int, synth []lpcFrame, sampleInFrame int,
 	newFrame.Period = currRatio*synth[frameNumber].Period + otherRatio*synth[otherIndex].Period
 	for coefficient := 0; coefficient < 10; coefficient++ {
 		newFrame.K[coefficient] = currRatio*synth[frameNumber].K[coefficient] + otherRatio*synth[otherIndex].K[coefficient]
-		// newFrame.K[coefficient] = synth[frameNumber].K[coefficient] // For debugging without FIR coefficient interpolation
 	}
-	// fmt.Println(currRatio, frameNumber, otherRatio, otherIndex)
+
 	return newFrame
 }
 
