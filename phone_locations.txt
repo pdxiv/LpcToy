@@ -416,7 +416,7 @@ looking for AW (OUT ----------xxx||)
   SOUTHEAST found AW first/middle
   SOUTHWEST found AW first/middle
   THOUSAND found AW first/middle
-looking for AY
+looking for AY (ICE ---------||||||||||)
   ADVISE found AY last/middle
   BY found AY last
   CYCLE found AY first/middle
