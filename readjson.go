@@ -14,13 +14,7 @@ type Segment struct {
 	K      []float32 `json:"K"`
 }
 
-type Person struct {
-	// Name string `json:"name"`
-	// Age  int    `json:"age"`
-
-}
-
-type Info map[string][]Segment
+type PhoneData map[string][]Segment
 
 const jsonStream = `
 {
@@ -172,17 +166,15 @@ const jsonStream = `
 }`
 
 func main() {
-	fmt.Println("Starting...")
 	dec := json.NewDecoder(strings.NewReader(jsonStream))
 	for {
-		var info Info
-		if err := dec.Decode(&info); err == io.EOF {
+		var phone PhoneData
+		if err := dec.Decode(&phone); err == io.EOF {
 			break
 		} else if err != nil {
 			log.Fatal(err)
 		}
-		fmt.Println(info["AA"][0].Energy)
-		fmt.Println(info["AE"][0].Energy)
-
+		fmt.Println(phone["AA"][0].Energy)
+		fmt.Println(phone["AE"][0].Energy)
 	}
 }
