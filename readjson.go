@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"io"
+	"io/ioutil"
 	"log"
 	"strings"
 )
@@ -14,167 +15,48 @@ type Segment struct {
 	K      []float32 `json:"K"`
 }
 
-type PhoneData map[string][]Segment
-
-const jsonStream = `
-{
-	"AA": [{
-			"Energy": 81,
-			"K": [-24256,
-				9216,
-				65,
-				1,
-				34, -20, -41,
-				55,
-				37, -15
-			],
-			"Period": 54
-		},
-		{
-			"Energy": 81,
-			"K": [-21632,
-				6720,
-				65,
-				57,
-				11,
-				36, -53,
-				55,
-				57,
-				22
-			],
-			"Period": 69
-		},
-		{
-			"Energy": 81,
-			"K": [-21632,
-				1536,
-				79,
-				57, -24,
-				47, -41,
-				79,
-				57,
-				22
-			],
-			"Period": 71
-		},
-		{
-			"Energy": 81,
-			"K": [-21632,
-				1536,
-				79,
-				57, -24,
-				47, -41,
-				79,
-				57,
-				22
-			],
-			"Period": 66
-		},
-		{
-			"Energy": 81,
-			"K": [-24256,
-				19648,
-				25, -26,
-				46,
-				25,
-				7,
-				31,
-				57, -33
-			],
-			"Period": 69
-		}
-	],
-	"AE": [{
-			"Energy": 57,
-			"K": [-10048,
-				6720,
-				38, -12, -1,
-				58,
-				19,
-				102,
-				16,
-				4
-			],
-			"Period": 99
-		},
-		{
-			"Energy": 57,
-			"K": [-5184,
-				9216,
-				38, -12, -12,
-				58,
-				7,
-				102,
-				37,
-				22
-			],
-			"Period": 95
-		},
-		{
-			"Energy": 114,
-			"K": [-5184,
-				13824,
-				52, -26, -1,
-				47,
-				7,
-				102,
-				37,
-				4
-			],
-			"Period": 92
-		},
-		{
-			"Energy": 81,
-			"K": [-10048,
-				26176,
-				11, -54,
-				34, -20,
-				19,
-				79, -4,
-				4
-			],
-			"Period": 92
-		},
-		{
-			"Energy": 2,
-			"K": [
-				10048, -3712,
-				25, -12, -24, -20, -53,
-				55, -4, -51
-			],
-			"Period": 16
-		},
-		{
-			"Energy": 0,
-			"K": [
-				10048, -3712,
-				25, -12, -24, -20, -53,
-				55, -4, -51
-			],
-			"Period": 16
-		},
-		{
-			"Energy": 0,
-			"K": [
-				10048, -3712,
-				25, -12, -24, -20, -53,
-				55, -4, -51
-			],
-			"Period": 16
-		}
-	]
-}`
+type PhoneDataFormat map[string][]Segment
 
 func main() {
-	dec := json.NewDecoder(strings.NewReader(jsonStream))
+	phone := loadJsonData("phones.json")
+	for phoneSymbol, phoneData := range phone {
+		fmt.Println(phoneSymbol)
+		fmt.Println("  Period", phoneData[0].Period)
+		fmt.Println("  Energy", phoneData[0].Energy)
+		for i, k := range phoneData[0].K {
+			fmt.Println("  K", i, k)
+		}
+	}
+
+	if found, _ := findSymbol(phone, "AA"); found {
+		fmt.Println("Found!")
+	} else {
+		fmt.Println("Not found!")
+	}
+}
+
+// Check if a phone symbol exists in the phone database. if so, return it
+func findSymbol(phone PhoneDataFormat, toFind string) (bool, []Segment) {
+	if val, ok := phone[toFind]; ok {
+		return true, val
+	} else {
+		return false, nil
+	}
+}
+
+func loadJsonData(filename string) PhoneDataFormat {
+	content, err := ioutil.ReadFile(filename)
+	if err != nil {
+		log.Fatal(err)
+	}
+	dec := json.NewDecoder(strings.NewReader(string(content)))
+	var phone PhoneDataFormat
 	for {
-		var phone PhoneData
 		if err := dec.Decode(&phone); err == io.EOF {
 			break
 		} else if err != nil {
 			log.Fatal(err)
 		}
-		fmt.Println(phone["AA"][0].Energy)
-		fmt.Println(phone["AE"][0].Energy)
 	}
+	return phone
 }
