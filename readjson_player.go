@@ -29,7 +29,7 @@ type LpcFrame struct {
 type PhoneDataFormat map[string][]LpcFrame
 
 func main() {
-	phone := loadJsonData("phones.json")
+	phone := loadJSONData("phones.json")
 
 	// Some printing for debugging purposes
 	/*	for phoneSymbol, phoneData := range phone {
@@ -165,7 +165,7 @@ func findSymbol(phone PhoneDataFormat, toFind string) (bool, []LpcFrame) {
 	}
 }
 
-func loadJsonData(filename string) PhoneDataFormat {
+func loadJSONData(filename string) PhoneDataFormat {
 	content, err := ioutil.ReadFile(filename)
 	if err != nil {
 		log.Fatal(err)

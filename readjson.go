@@ -18,7 +18,7 @@ type Segment struct {
 type PhoneDataFormat map[string][]Segment
 
 func main() {
-	phone := loadJsonData("phones.json")
+	phone := loadJSONData("phones.json")
 	for phoneSymbol, phoneData := range phone {
 		fmt.Println(phoneSymbol)
 		fmt.Println("  Period", phoneData[0].Period)
@@ -44,7 +44,7 @@ func findSymbol(phone PhoneDataFormat, toFind string) (bool, []Segment) {
 	}
 }
 
-func loadJsonData(filename string) PhoneDataFormat {
+func loadJSONData(filename string) PhoneDataFormat {
 	content, err := ioutil.ReadFile(filename)
 	if err != nil {
 		log.Fatal(err)
