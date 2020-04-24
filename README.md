@@ -19,3 +19,7 @@ All the math is being done in floating point to "improve" sound quality.
 ### Outlandish aspirations
 
 - Create GUI
+
+## Random thoughts
+
+Chains of unvoiced allphones and chains of voiced allophones could be grouped together, for more natural-sounding transitions, if available.
